@@ -94,9 +94,9 @@ const questions: Question[] = [
   // Ordering / sequencing x2
   {
     dimension: "ordering",
-    prompt: { zh: "接下来是哪个数字？2, 3, 4, ?", en: "What comes next? 2, 3, 4, ?" },
-    options: ["5", "6", "7"],
-    answer: 0,
+    prompt: { zh: "接下来是哪个数字？2, 5, 8, ?", en: "What comes next? 2, 5, 8, ?" },
+    options: ["9", "10", "11"],
+    answer: 2,
   },
   {
     dimension: "ordering",
