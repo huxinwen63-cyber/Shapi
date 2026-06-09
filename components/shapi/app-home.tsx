@@ -13,7 +13,7 @@ export function AppHome({ onNavigate }: AppHomeProps) {
   const { t } = useLanguage()
 
   return (
-    <div className="flex flex-col h-full p-6">
+    <div className="flex flex-col h-full p-6 overflow-y-auto">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
@@ -98,7 +98,7 @@ export function AppHome({ onNavigate }: AppHomeProps) {
       {/* Progress - directly after the three worlds */}
       <button
         onClick={() => onNavigate("progress")}
-        className="w-full bg-card border border-border rounded-2xl p-4 flex items-center justify-between hover:bg-muted/50 transition-colors"
+        className="w-full bg-card border border-border rounded-2xl p-4 mb-2 flex items-center justify-between hover:bg-muted/50 transition-colors shrink-0"
       >
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
