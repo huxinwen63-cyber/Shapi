@@ -8,6 +8,7 @@ import { WorldScreen } from "./world-screen"
 import { SubitizingGame } from "./subitizing-game"
 import { ComparisonGame } from "./comparison-game"
 import { ProgressScreen } from "./progress-screen"
+import { ScreeningTest } from "./screening-test"
 import { SettingsScreen } from "./settings-screen"
 import { ParentLogin } from "./parent-login"
 import { ParentDashboard } from "./parent-dashboard"
@@ -26,6 +27,7 @@ type Screen =
   | "placeValue"
   | "addSub"
   | "progress"
+  | "screening"
   | "settings"
   | "parentLogin"
   | "parentDashboard"
@@ -106,6 +108,9 @@ export function AppShell() {
       )}
       {currentScreen === "progress" && (
         <ProgressScreen onBack={handleBack} />
+      )}
+      {currentScreen === "screening" && (
+        <ScreeningTest onBack={handleBack} />
       )}
       {currentScreen === "settings" && (
         <SettingsScreen onBack={handleBack} onNavigate={(screen) => {

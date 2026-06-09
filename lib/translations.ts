@@ -13,6 +13,8 @@ export const translations = {
       parent: "家长入口",
       explore: "探索数字",
       exploreSubtitle: "和小猫一起开始今天的学习",
+      screening: "数感小测验",
+      screeningSubtitle: "10道趣味题，了解孩子的数感",
     },
     // Activities
     activities: {
@@ -155,6 +157,26 @@ export const translations = {
       emailSettings: "邮件设置",
       notificationTime: "提醒时间",
     },
+    // Screening test
+    screening: {
+      title: "数感小测验",
+      introTitle: "和小猫做个小游戏吧",
+      introText: "这是10道简单有趣的题目，帮助了解孩子的数感发展。没有对错，也没有计时，放轻松哦！",
+      introNote: "本测验仅供参考，不能替代专业诊断。",
+      start: "开始测验",
+      question: "第 {n} 题",
+      next: "下一题",
+      finish: "看结果",
+      resultTitle: "测验完成啦",
+      scoreLabel: "答对",
+      ofTotal: "共10题",
+      strong: "孩子的数感发展得很好！继续和小猫一起玩吧。",
+      medium: "孩子的数感正在稳步成长，多做练习会更棒。",
+      watch: "建议多陪孩子玩数感游戏，如果持续有困难，可以咨询专业老师。",
+      disclaimer: "本结果仅供家长参考，不构成医学诊断。",
+      retake: "再测一次",
+      backHome: "返回首页",
+    },
     // Language toggle
     langToggle: "English",
   },
@@ -170,6 +192,8 @@ export const translations = {
       parent: "Parent Mode",
       explore: "Explore Numbers",
       exploreSubtitle: "Start today's learning with Kitty",
+      screening: "Number Sense Check",
+      screeningSubtitle: "10 fun questions to learn about number sense",
     },
     // Activities
     activities: {
@@ -311,6 +335,26 @@ export const translations = {
       sendTestReport: "Send Test Report",
       emailSettings: "Email Settings",
       notificationTime: "Reminder Time",
+    },
+    // Screening test
+    screening: {
+      title: "Number Sense Check",
+      introTitle: "Play a little game with Kitty",
+      introText: "These are 10 simple, fun questions to learn about your child's number sense. No right or wrong, no timer, just relax!",
+      introNote: "This check is for reference only and does not replace a professional diagnosis.",
+      start: "Start Check",
+      question: "Question {n}",
+      next: "Next",
+      finish: "See Results",
+      resultTitle: "All Done!",
+      scoreLabel: "Correct",
+      ofTotal: "of 10",
+      strong: "Your child's number sense is developing well! Keep playing with Kitty.",
+      medium: "Your child's number sense is growing steadily. More practice will help.",
+      watch: "Consider playing more number games together. If difficulties persist, consult a specialist.",
+      disclaimer: "This result is for parent reference only and is not a medical diagnosis.",
+      retake: "Take Again",
+      backHome: "Back Home",
     },
     // Language toggle
     langToggle: "中文",
