@@ -155,7 +155,7 @@ function NumberLineVisual({ target }: { target: number }) {
           className="absolute -translate-x-1/2 flex flex-col items-center"
           style={{ left: `${target * 10}%` }}
         >
-          <ArrowDown className="w-6 h-6 text-accent-foreground" />
+          <ArrowDown className="w-7 h-7 text-green-600" strokeWidth={3} />
         </div>
       </div>
       {/* The line with ticks */}
