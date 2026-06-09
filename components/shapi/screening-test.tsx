@@ -44,10 +44,10 @@ const questions: Question[] = [
   {
     dimension: "comparison",
     prompt: { zh: "哪边的点更多？", en: "Which side has more dots?" },
-    options: ["左边 / Left", "右边 / Right"],
-    answer: 0,
-    leftDots: 6,
-    rightDots: 4,
+    options: ["Left", "Right"],
+    answer: 1,
+    leftDots: 4,
+    rightDots: 6,
   },
   {
     dimension: "comparison",
