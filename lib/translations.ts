@@ -1,0 +1,258 @@
+export type Locale = "zh" | "en"
+
+export const translations = {
+  zh: {
+    // App Home
+    app: {
+      greeting: "你好",
+      defaultName: "小朋友",
+      todayActivity: "今天学什么",
+      myPet: "我的伙伴",
+      progress: "学习进度",
+      settings: "设置",
+      parent: "家长入口",
+    },
+    // Activities
+    activities: {
+      title: "选择活动",
+      subitizing: {
+        title: "数量识别",
+        subtitle: "一眼看出有几个",
+        description: "训练快速识别1-5的数量",
+      },
+      partWhole: {
+        title: "拆分重组",
+        subtitle: "数字的秘密",
+        description: "5可以变成3+2哦",
+      },
+      spatial: {
+        title: "形状探索",
+        subtitle: "认识图形",
+        description: "圆形、方形、三角形",
+      },
+      matching: {
+        title: "配对游戏",
+        subtitle: "找到一样多",
+        description: "哪两组数量相同",
+      },
+    },
+    // Pet/Character
+    pet: {
+      title: "我的小伙伴",
+      feed: "喂食",
+      play: "玩耍",
+      dress: "装扮",
+      mood: "心情",
+      happy: "开心",
+      hungry: "饿了",
+      sleepy: "困了",
+      unlocked: "已解锁",
+      locked: "待解锁",
+      items: [
+        {
+          name: "小猫咪",
+          description: "喜欢午后阳光的可爱伙伴",
+        },
+      ],
+    },
+    // Progress
+    progress: {
+      title: "学习进度",
+      today: "今天",
+      thisWeek: "本周",
+      total: "总计",
+      activitiesCompleted: "完成活动",
+      streakDays: "连续天数",
+      level: "等级",
+      starsEarned: "获得星星",
+    },
+    // Game UI
+    game: {
+      start: "开始",
+      next: "继续",
+      tryAgain: "再试一次",
+      great: "太棒了",
+      goodJob: "做得好",
+      keepGoing: "加油",
+      howMany: "有几个",
+      tapAnswer: "点击答案",
+      dragHere: "拖到这里",
+      back: "返回",
+    },
+    // Settings
+    settings: {
+      title: "设置",
+      language: "语言",
+      sound: "声音",
+      music: "音乐",
+      notifications: "通知",
+      parentMode: "家长模式",
+    },
+    // Parent Mode
+    parent: {
+      title: "家长模式",
+      login: "登录",
+      loginTitle: "家长登录",
+      loginSubtitle: "登录后每月接收孩子的学习报告",
+      email: "邮箱地址",
+      emailPlaceholder: "请输入邮箱",
+      password: "密码",
+      passwordPlaceholder: "请输入密码",
+      loginButton: "登录",
+      registerButton: "注册",
+      forgotPassword: "忘记密码?",
+      or: "或",
+      continueAsGuest: "跳过登录",
+      logout: "退出登录",
+      dashboard: "家长中心",
+      childName: "孩子姓名",
+      monthlyReport: "月度报告",
+      reportDescription: "每月初发送上月学习报告到您的邮箱",
+      subscribe: "订阅报告",
+      subscribed: "已订阅",
+      reportPreview: "报告预览",
+      currentMonth: "本月进度",
+      totalTime: "学习时长",
+      minutes: "分钟",
+      skillProgress: "技能进展",
+      subitizing: "数量识别",
+      partWhole: "拆分重组",
+      spatial: "空间感知",
+      recommendation: "建议",
+      recommendationText: "孩子在数量识别方面表现出色，建议增加拆分重组练习来进一步提升数感。",
+      sendTestReport: "发送测试报告",
+      emailSettings: "邮件设置",
+      notificationTime: "提醒时间",
+    },
+    // Language toggle
+    langToggle: "English",
+  },
+  en: {
+    // App Home
+    app: {
+      greeting: "Hello",
+      defaultName: "Friend",
+      todayActivity: "Learn Today",
+      myPet: "My Companion",
+      progress: "Progress",
+      settings: "Settings",
+      parent: "Parent Mode",
+    },
+    // Activities
+    activities: {
+      title: "Choose Activity",
+      subitizing: {
+        title: "Quantity Recognition",
+        subtitle: "See how many at a glance",
+        description: "Practice recognizing 1-5 instantly",
+      },
+      partWhole: {
+        title: "Part-Whole",
+        subtitle: "Number secrets",
+        description: "5 can become 3+2",
+      },
+      spatial: {
+        title: "Shape Explorer",
+        subtitle: "Know your shapes",
+        description: "Circle, square, triangle",
+      },
+      matching: {
+        title: "Matching Game",
+        subtitle: "Find the same amount",
+        description: "Which groups are equal",
+      },
+    },
+    // Pet/Character
+    pet: {
+      title: "My Companion",
+      feed: "Feed",
+      play: "Play",
+      dress: "Dress Up",
+      mood: "Mood",
+      happy: "Happy",
+      hungry: "Hungry",
+      sleepy: "Sleepy",
+      unlocked: "Unlocked",
+      locked: "Locked",
+      items: [
+        {
+          name: "Kitty",
+          description: "A lovely companion who loves afternoon sunshine",
+        },
+      ],
+    },
+    // Progress
+    progress: {
+      title: "Learning Progress",
+      today: "Today",
+      thisWeek: "This Week",
+      total: "Total",
+      activitiesCompleted: "Activities Done",
+      streakDays: "Day Streak",
+      level: "Level",
+      starsEarned: "Stars Earned",
+    },
+    // Game UI
+    game: {
+      start: "Start",
+      next: "Next",
+      tryAgain: "Try Again",
+      great: "Great!",
+      goodJob: "Good Job",
+      keepGoing: "Keep Going",
+      howMany: "How many?",
+      tapAnswer: "Tap your answer",
+      dragHere: "Drag here",
+      back: "Back",
+    },
+    // Settings
+    settings: {
+      title: "Settings",
+      language: "Language",
+      sound: "Sound",
+      music: "Music",
+      notifications: "Notifications",
+      parentMode: "Parent Mode",
+    },
+    // Parent Mode
+    parent: {
+      title: "Parent Mode",
+      login: "Login",
+      loginTitle: "Parent Login",
+      loginSubtitle: "Sign in to receive monthly learning reports",
+      email: "Email Address",
+      emailPlaceholder: "Enter your email",
+      password: "Password",
+      passwordPlaceholder: "Enter your password",
+      loginButton: "Sign In",
+      registerButton: "Sign Up",
+      forgotPassword: "Forgot password?",
+      or: "or",
+      continueAsGuest: "Skip for now",
+      logout: "Sign Out",
+      dashboard: "Parent Dashboard",
+      childName: "Child Name",
+      monthlyReport: "Monthly Report",
+      reportDescription: "Receive your child's learning report at the beginning of each month",
+      subscribe: "Subscribe",
+      subscribed: "Subscribed",
+      reportPreview: "Report Preview",
+      currentMonth: "This Month",
+      totalTime: "Learning Time",
+      minutes: "min",
+      skillProgress: "Skill Progress",
+      subitizing: "Quantity Recognition",
+      partWhole: "Part-Whole",
+      spatial: "Spatial Awareness",
+      recommendation: "Recommendation",
+      recommendationText: "Your child excels at quantity recognition. Consider adding more part-whole exercises to further develop number sense.",
+      sendTestReport: "Send Test Report",
+      emailSettings: "Email Settings",
+      notificationTime: "Reminder Time",
+    },
+    // Language toggle
+    langToggle: "中文",
+  },
+} as const
+
+export type Translations = typeof translations.zh
