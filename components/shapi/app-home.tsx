@@ -95,8 +95,8 @@ export function AppHome({ onNavigate }: AppHomeProps) {
         </div>
       </div>
 
-      {/* Bottom Nav */}
-      <div className="mt-auto pt-4">
+      {/* Progress */}
+      <div className="pt-2">
         <button
           onClick={() => onNavigate("progress")}
           className="w-full bg-card border border-border rounded-2xl p-4 flex items-center justify-between hover:bg-muted/50 transition-colors"
