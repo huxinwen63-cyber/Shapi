@@ -53,59 +53,44 @@ export function AppHome({ onNavigate }: AppHomeProps) {
         <ChevronRight className="w-5 h-5 text-muted-foreground" />
       </button>
 
-      {/* Activity Grid */}
+      {/* Worlds */}
       <div className="mb-4">
-        <h2 className="text-lg font-semibold mb-4" suppressHydrationWarning>
-          {t.app.todayActivity}
+        <h2 className="text-lg font-semibold mb-1" suppressHydrationWarning>
+          {t.worlds.title}
         </h2>
-        <div className="grid grid-cols-2 gap-4">
-          <ActivityCard
+        <p className="text-sm text-muted-foreground mb-4" suppressHydrationWarning>
+          {t.worlds.subtitle}
+        </p>
+        <div className="flex flex-col gap-4">
+          <WorldCard
             color="bg-primary/10"
-            iconColor="text-primary"
-            title={t.activities.subitizing.title}
-            subtitle={t.activities.subitizing.subtitle}
-            stars={3}
-            onClick={() => onNavigate("subitizing")}
+            accent="text-primary"
+            number={1}
+            title={t.worlds.perception.title}
+            subtitle={t.worlds.perception.subtitle}
+            stars={5}
+            totalStars={6}
+            onClick={() => onNavigate("world-perception")}
           />
-          <ActivityCard
+          <WorldCard
             color="bg-secondary/30"
-            iconColor="text-secondary-foreground"
-            title={t.activities.comparison.title}
-            subtitle={t.activities.comparison.subtitle}
-            stars={2}
-            onClick={() => onNavigate("comparison")}
-          />
-          <ActivityCard
-            color="bg-accent/20"
-            iconColor="text-accent-foreground"
-            title={t.activities.numberLine.title}
-            subtitle={t.activities.numberLine.subtitle}
+            accent="text-secondary-foreground"
+            number={2}
+            title={t.worlds.representation.title}
+            subtitle={t.worlds.representation.subtitle}
             stars={1}
-            onClick={() => onNavigate("numberLine")}
+            totalStars={6}
+            onClick={() => onNavigate("world-representation")}
           />
-          <ActivityCard
-            color="bg-sky-100"
-            iconColor="text-sky-700"
-            title={t.activities.partWhole.title}
-            subtitle={t.activities.partWhole.subtitle}
+          <WorldCard
+            color="bg-accent/20"
+            accent="text-accent-foreground"
+            number={3}
+            title={t.worlds.operation.title}
+            subtitle={t.worlds.operation.subtitle}
             stars={0}
-            onClick={() => onNavigate("partWhole")}
-          />
-          <ActivityCard
-            color="bg-amber-50"
-            iconColor="text-amber-700"
-            title={t.activities.placeValue.title}
-            subtitle={t.activities.placeValue.subtitle}
-            stars={0}
-            onClick={() => onNavigate("placeValue")}
-          />
-          <ActivityCard
-            color="bg-muted"
-            iconColor="text-muted-foreground"
-            title={t.activities.addSub.title}
-            subtitle={t.activities.addSub.subtitle}
-            stars={0}
-            onClick={() => onNavigate("addSub")}
+            totalStars={6}
+            onClick={() => onNavigate("world-operation")}
           />
         </div>
       </div>
@@ -134,40 +119,48 @@ export function AppHome({ onNavigate }: AppHomeProps) {
   )
 }
 
-function ActivityCard({
+function WorldCard({
   color,
-  iconColor,
+  accent,
+  number,
   title,
   subtitle,
   stars,
+  totalStars,
   onClick,
 }: {
   color: string
-  iconColor: string
+  accent: string
+  number: number
   title: string
   subtitle: string
   stars: number
+  totalStars: number
   onClick: () => void
 }) {
   return (
     <button
       onClick={onClick}
-      className={`${color} rounded-2xl p-4 text-left transition-transform active:scale-95 hover:scale-[1.02]`}
+      className={`${color} rounded-3xl p-5 text-left transition-transform active:scale-[0.98] hover:scale-[1.02] flex items-center gap-4`}
     >
-      <div className="flex gap-0.5 mb-2">
-        {[...Array(3)].map((_, i) => (
-          <Star
-            key={i}
-            className={`w-4 h-4 ${i < stars ? "text-amber-400 fill-amber-400" : "text-foreground/20"}`}
-          />
-        ))}
+      <div className={`w-12 h-12 rounded-2xl bg-background/60 flex items-center justify-center font-bold text-xl ${accent} shrink-0`}>
+        {number}
       </div>
-      <h3 className={`font-semibold ${iconColor} mb-1`} suppressHydrationWarning>
-        {title}
-      </h3>
-      <p className="text-xs text-muted-foreground" suppressHydrationWarning>
-        {subtitle}
-      </p>
+      <div className="flex-1 min-w-0">
+        <h3 className={`font-semibold text-base ${accent} mb-0.5`} suppressHydrationWarning>
+          {title}
+        </h3>
+        <p className="text-xs text-muted-foreground mb-2 text-pretty" suppressHydrationWarning>
+          {subtitle}
+        </p>
+        <div className="flex items-center gap-1">
+          <Star className={`w-3.5 h-3.5 ${accent} fill-current`} />
+          <span className="text-xs font-medium text-muted-foreground">
+            {stars} / {totalStars}
+          </span>
+        </div>
+      </div>
+      <ChevronRight className="w-5 h-5 text-muted-foreground shrink-0" />
     </button>
   )
 }

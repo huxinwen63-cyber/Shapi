@@ -46,6 +46,23 @@ export const translations = {
         description: "在图形帮助下做加减法",
       },
     },
+    // Worlds (groups of activities)
+    worlds: {
+      title: "三个世界",
+      subtitle: "和小猫一起探索数字",
+      perception: {
+        title: "看见数量",
+        subtitle: "用眼睛感受多和少",
+      },
+      representation: {
+        title: "数字的家",
+        subtitle: "认识数字住在哪里",
+      },
+      operation: {
+        title: "数字魔法",
+        subtitle: "把数字拆开又合起来",
+      },
+    },
     // Pet/Character
     pet: {
       title: "我的小伙伴",
@@ -182,6 +199,23 @@ export const translations = {
         title: "Easy Math",
         subtitle: "Add and subtract",
         description: "Add and subtract with visual help",
+      },
+    },
+    // Worlds (groups of activities)
+    worlds: {
+      title: "Three Worlds",
+      subtitle: "Explore numbers with Kitty",
+      perception: {
+        title: "See Numbers",
+        subtitle: "Feel more and less with your eyes",
+      },
+      representation: {
+        title: "Where Numbers Live",
+        subtitle: "Learn where numbers belong",
+      },
+      operation: {
+        title: "Number Magic",
+        subtitle: "Break numbers apart and put them together",
       },
     },
     // Pet/Character
