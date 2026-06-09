@@ -14,7 +14,7 @@ export const translations = {
       explore: "探索数字",
       exploreSubtitle: "和小猫一起开始今天的学习",
       screening: "数感小测验",
-      screeningSubtitle: "10道趣味题，了解孩子的数感",
+      screeningSubtitle: "15道趣味题，从多角度了解数感",
     },
     // Activities
     activities: {
@@ -210,7 +210,7 @@ export const translations = {
       explore: "Explore Numbers",
       exploreSubtitle: "Start today's learning with Kitty",
       screening: "Number Sense Check",
-      screeningSubtitle: "10 fun questions to learn about number sense",
+      screeningSubtitle: "15 fun questions across key number-sense skills",
     },
     // Activities
     activities: {
