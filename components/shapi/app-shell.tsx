@@ -4,12 +4,13 @@ import { useState } from "react"
 import { AppHome } from "./app-home"
 import { PetScreen } from "./pet-screen"
 import { SubitizingGame } from "./subitizing-game"
+import { ComparisonGame } from "./comparison-game"
 import { ProgressScreen } from "./progress-screen"
 import { SettingsScreen } from "./settings-screen"
 import { ParentLogin } from "./parent-login"
 import { ParentDashboard } from "./parent-dashboard"
 
-type Screen = "home" | "pet" | "subitizing" | "partWhole" | "spatial" | "matching" | "progress" | "settings" | "parentLogin" | "parentDashboard"
+type Screen = "home" | "pet" | "subitizing" | "comparison" | "numberLine" | "partWhole" | "placeValue" | "addSub" | "progress" | "settings" | "parentLogin" | "parentDashboard"
 
 export function AppShell() {
   const [currentScreen, setCurrentScreen] = useState<Screen>("home")
@@ -34,7 +35,10 @@ export function AppShell() {
       {currentScreen === "subitizing" && (
         <SubitizingGame onBack={handleBack} />
       )}
-      {(currentScreen === "partWhole" || currentScreen === "spatial" || currentScreen === "matching") && (
+      {currentScreen === "comparison" && (
+        <ComparisonGame onBack={handleBack} />
+      )}
+      {(currentScreen === "numberLine" || currentScreen === "partWhole" || currentScreen === "placeValue" || currentScreen === "addSub") && (
         <div className="flex flex-col h-full items-center justify-center p-8 text-center">
           <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mb-4">
             <span className="text-3xl">🚧</span>

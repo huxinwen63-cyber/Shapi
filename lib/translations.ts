@@ -16,24 +16,34 @@ export const translations = {
     activities: {
       title: "选择活动",
       subitizing: {
-        title: "数量识别",
+        title: "快速识数",
         subtitle: "一眼看出有几个",
         description: "训练快速识别1-5的数量",
       },
+      comparison: {
+        title: "比多少",
+        subtitle: "哪边更多",
+        description: "比较两组数量的大小",
+      },
+      numberLine: {
+        title: "数轴探险",
+        subtitle: "数字住在哪里",
+        description: "在数轴上找到数字的位置",
+      },
       partWhole: {
-        title: "拆分重组",
+        title: "凑十拆分",
         subtitle: "数字的秘密",
         description: "5可以变成3+2哦",
       },
-      spatial: {
-        title: "形状探索",
-        subtitle: "认识图形",
-        description: "圆形、方形、三角形",
+      placeValue: {
+        title: "十和一",
+        subtitle: "认识位值",
+        description: "用小棒理解十位和个位",
       },
-      matching: {
-        title: "配对游戏",
-        subtitle: "找到一样多",
-        description: "哪两组数量相同",
+      addSub: {
+        title: "轻松算术",
+        subtitle: "加加减减",
+        description: "在图形帮助下做加减法",
       },
     },
     // Pet/Character
@@ -75,6 +85,8 @@ export const translations = {
       goodJob: "做得好",
       keepGoing: "加油",
       howMany: "有几个",
+      whichMore: "哪边更多",
+      tapMore: "点击更多的一边",
       tapAnswer: "点击答案",
       dragHere: "拖到这里",
       back: "返回",
@@ -142,24 +154,34 @@ export const translations = {
     activities: {
       title: "Choose Activity",
       subitizing: {
-        title: "Quantity Recognition",
+        title: "Quick Count",
         subtitle: "See how many at a glance",
         description: "Practice recognizing 1-5 instantly",
       },
+      comparison: {
+        title: "More or Less",
+        subtitle: "Which side has more",
+        description: "Compare two groups of objects",
+      },
+      numberLine: {
+        title: "Number Line",
+        subtitle: "Where do numbers live",
+        description: "Find where numbers sit on the line",
+      },
       partWhole: {
-        title: "Part-Whole",
+        title: "Make & Break",
         subtitle: "Number secrets",
         description: "5 can become 3+2",
       },
-      spatial: {
-        title: "Shape Explorer",
-        subtitle: "Know your shapes",
-        description: "Circle, square, triangle",
+      placeValue: {
+        title: "Tens & Ones",
+        subtitle: "Know place value",
+        description: "Use sticks to understand tens and ones",
       },
-      matching: {
-        title: "Matching Game",
-        subtitle: "Find the same amount",
-        description: "Which groups are equal",
+      addSub: {
+        title: "Easy Math",
+        subtitle: "Add and subtract",
+        description: "Add and subtract with visual help",
       },
     },
     // Pet/Character
@@ -201,6 +223,8 @@ export const translations = {
       goodJob: "Good Job",
       keepGoing: "Keep Going",
       howMany: "How many?",
+      whichMore: "Which has more?",
+      tapMore: "Tap the side with more",
       tapAnswer: "Tap your answer",
       dragHere: "Drag here",
       back: "Back",

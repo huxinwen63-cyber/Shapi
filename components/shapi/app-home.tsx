@@ -70,26 +70,42 @@ export function AppHome({ onNavigate }: AppHomeProps) {
           <ActivityCard
             color="bg-secondary/30"
             iconColor="text-secondary-foreground"
-            title={t.activities.partWhole.title}
-            subtitle={t.activities.partWhole.subtitle}
+            title={t.activities.comparison.title}
+            subtitle={t.activities.comparison.subtitle}
             stars={2}
-            onClick={() => onNavigate("partWhole")}
+            onClick={() => onNavigate("comparison")}
           />
           <ActivityCard
             color="bg-accent/20"
             iconColor="text-accent-foreground"
-            title={t.activities.spatial.title}
-            subtitle={t.activities.spatial.subtitle}
+            title={t.activities.numberLine.title}
+            subtitle={t.activities.numberLine.subtitle}
             stars={1}
-            onClick={() => onNavigate("spatial")}
+            onClick={() => onNavigate("numberLine")}
+          />
+          <ActivityCard
+            color="bg-sky-100"
+            iconColor="text-sky-700"
+            title={t.activities.partWhole.title}
+            subtitle={t.activities.partWhole.subtitle}
+            stars={0}
+            onClick={() => onNavigate("partWhole")}
+          />
+          <ActivityCard
+            color="bg-amber-50"
+            iconColor="text-amber-700"
+            title={t.activities.placeValue.title}
+            subtitle={t.activities.placeValue.subtitle}
+            stars={0}
+            onClick={() => onNavigate("placeValue")}
           />
           <ActivityCard
             color="bg-muted"
             iconColor="text-muted-foreground"
-            title={t.activities.matching.title}
-            subtitle={t.activities.matching.subtitle}
+            title={t.activities.addSub.title}
+            subtitle={t.activities.addSub.subtitle}
             stars={0}
-            onClick={() => onNavigate("matching")}
+            onClick={() => onNavigate("addSub")}
           />
         </div>
       </div>
