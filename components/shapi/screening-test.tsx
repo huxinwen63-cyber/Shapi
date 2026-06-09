@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react"
 import { useLanguage } from "@/lib/language-context"
-import { ArrowLeft, Star, Sparkles, Clock } from "lucide-react"
+import { ArrowLeft, Star, Sparkles, Clock, ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { AnimatedCat } from "./animated-cat"
 
@@ -23,29 +23,22 @@ interface Question {
   numberLineTarget?: number // value 0-10 to locate
 }
 
-// 15 research-backed number-sense screening questions across 6 dimensions
+// Research-backed number-sense screening questions across 6 dimensions
 const questions: Question[] = [
-  // Subitizing (instantly recognizing small sets) x3
+  // Subitizing (instantly recognizing small sets) x2 — quick-look emphasis
   {
     dimension: "subitizing",
-    prompt: { zh: "一眼看，有几个点？", en: "How many dots at a glance?" },
+    prompt: { zh: "快看一眼，有几个点？", en: "Quick look! How many dots?" },
     options: ["2", "3", "4"],
     answer: 1,
     dots: 3,
   },
   {
     dimension: "subitizing",
-    prompt: { zh: "一眼看，有几个点？", en: "How many dots at a glance?" },
+    prompt: { zh: "快看一眼，有几个点？", en: "Quick look! How many dots?" },
     options: ["4", "5", "6"],
     answer: 1,
     dots: 5,
-  },
-  {
-    dimension: "subitizing",
-    prompt: { zh: "一眼看，有几个点？", en: "How many dots at a glance?" },
-    options: ["3", "4", "5"],
-    answer: 1,
-    dots: 4,
   },
   // Magnitude comparison x3
   {
@@ -68,32 +61,32 @@ const questions: Question[] = [
     options: ["3", "8"],
     answer: 0,
   },
-  // Number line estimation x2
+  // Number line — arrow points to a spot, which number is it? x2
   {
     dimension: "numberLine",
-    prompt: { zh: "数轴上，5 大概在哪里？", en: "About where is 5 on the line?" },
-    options: ["A", "B", "C"],
+    prompt: { zh: "箭头指着哪个数字？", en: "Which number is the arrow pointing to?" },
+    options: ["4", "5", "6"],
     answer: 1,
     numberLineTarget: 5,
   },
   {
     dimension: "numberLine",
-    prompt: { zh: "数轴上，8 大概在哪里？", en: "About where is 8 on the line?" },
-    options: ["A", "B", "C"],
-    answer: 2,
+    prompt: { zh: "箭头指着哪个数字？", en: "Which number is the arrow pointing to?" },
+    options: ["7", "8", "9"],
+    answer: 1,
     numberLineTarget: 8,
   },
-  // Dot-to-numeral matching x2
+  // Counting larger sets (dot-to-numeral) x2
   {
     dimension: "matching",
-    prompt: { zh: "4 个点配哪个数字？", en: "Which number matches 4 dots?" },
+    prompt: { zh: "图里有几个点？", en: "How many dots in the picture?" },
     options: ["3", "4", "5"],
     answer: 1,
     dots: 4,
   },
   {
     dimension: "matching",
-    prompt: { zh: "6 个点配哪个数字？", en: "Which number matches 6 dots?" },
+    prompt: { zh: "图里有几个点？", en: "How many dots in the picture?" },
     options: ["5", "6", "7"],
     answer: 1,
     dots: 6,
@@ -111,14 +104,7 @@ const questions: Question[] = [
     options: ["2", "4", "6"],
     answer: 1,
   },
-  // Simple calculation / part-whole x3
-  {
-    dimension: "calculation",
-    prompt: { zh: "几个点加起来是 5？已有 2 个", en: "How many more make 5? Have 2" },
-    options: ["2", "3", "4"],
-    answer: 1,
-    dots: 2,
-  },
+  // Simple calculation / part-whole x2
   {
     dimension: "calculation",
     prompt: { zh: "2 加 3 等于几？", en: "What is 2 + 3?" },
@@ -159,37 +145,40 @@ function DotBox({ count, color = "bg-primary" }: { count: number; color?: string
   )
 }
 
-function NumberLineVisual() {
+function NumberLineVisual({ target }: { target: number }) {
+  // ticks 0..10, arrow points to the target value
   return (
-    <div className="w-full max-w-xs">
-      <div className="relative h-2 bg-muted rounded-full mb-3">
-        {[0, 5, 10].map((n) => (
+    <div className="w-72 pt-6">
+      {/* Arrow above the target */}
+      <div className="relative h-6 mb-1">
+        <div
+          className="absolute -translate-x-1/2 flex flex-col items-center"
+          style={{ left: `${target * 10}%` }}
+        >
+          <ArrowDown className="w-6 h-6 text-accent-foreground" />
+        </div>
+      </div>
+      {/* The line with ticks */}
+      <div className="relative h-3 bg-muted rounded-full">
+        {Array.from({ length: 11 }, (_, n) => (
           <div
             key={n}
-            className="absolute -top-1 w-4 h-4 bg-primary/30 rounded-full -translate-x-1/2"
+            className="absolute top-1/2 w-1 h-3 bg-primary/40 rounded-full -translate-x-1/2 -translate-y-1/2"
             style={{ left: `${n * 10}%` }}
           />
         ))}
       </div>
-      <div className="relative h-6">
-        {[
-          { label: "A", pos: 20 },
-          { label: "B", pos: 50 },
-          { label: "C", pos: 80 },
-        ].map((m) => (
+      {/* Labels: show only 0, 5, 10 to keep it clean */}
+      <div className="relative h-5 mt-1">
+        {[0, 5, 10].map((n) => (
           <span
-            key={m.label}
-            className="absolute -translate-x-1/2 text-sm font-bold text-accent-foreground"
-            style={{ left: `${m.pos}%` }}
+            key={n}
+            className="absolute -translate-x-1/2 text-xs text-muted-foreground"
+            style={{ left: `${n * 10}%` }}
           >
-            {m.label}
+            {n}
           </span>
         ))}
-      </div>
-      <div className="flex justify-between text-xs text-muted-foreground mt-1">
-        <span>0</span>
-        <span>5</span>
-        <span>10</span>
       </div>
     </div>
   )
@@ -279,9 +268,9 @@ export function ScreeningTest({ onBack }: ScreeningTestProps) {
 
     // Overall message
     const overall =
-      totalCorrect >= 12 && slowCount <= 3
+      totalCorrect >= 11 && slowCount <= 3
         ? t.screening.overallStrong
-        : totalCorrect >= 8
+        : totalCorrect >= 7
           ? t.screening.overallMedium
           : t.screening.overallWatch
 
@@ -439,7 +428,7 @@ export function ScreeningTest({ onBack }: ScreeningTestProps) {
               <DotBox count={q.rightDots} color="bg-accent" />
             </>
           ) : q.dimension === "numberLine" ? (
-            <NumberLineVisual />
+            <NumberLineVisual target={q.numberLineTarget ?? 5} />
           ) : q.dots !== undefined ? (
             <DotBox count={q.dots} />
           ) : null}

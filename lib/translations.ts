@@ -14,7 +14,7 @@ export const translations = {
       explore: "探索数字",
       exploreSubtitle: "和小猫一起开始今天的学习",
       screening: "数感小测验",
-      screeningSubtitle: "15道趣味题，从多角度了解数感",
+      screeningSubtitle: "趣味题目，从多角度了解数感",
     },
     // Activities
     activities: {
@@ -161,7 +161,7 @@ export const translations = {
     screening: {
       title: "数感小测验",
       introTitle: "和小猫做个小游戏吧",
-      introText: "这是15道有趣的题目，从多个角度了解孩子的数感发展，并会留意答题的速度。没有对错，放轻松哦！",
+      introText: "这是一组有趣的题目，从多个角度了解孩子的数感发展，并会留意答题的速度。没有对错，放轻松哦！",
       introNote: "本测验基于数感研究设计，仅供参考，不能替代专业诊断。",
       start: "开始测验",
       question: "第 {n} 题",
@@ -210,7 +210,7 @@ export const translations = {
       explore: "Explore Numbers",
       exploreSubtitle: "Start today's learning with Kitty",
       screening: "Number Sense Check",
-      screeningSubtitle: "15 fun questions across key number-sense skills",
+      screeningSubtitle: "Fun questions across key number-sense skills",
     },
     // Activities
     activities: {
@@ -357,7 +357,7 @@ export const translations = {
     screening: {
       title: "Number Sense Check",
       introTitle: "Play a little game with Kitty",
-      introText: "These are 15 fun questions that look at your child's number sense from several angles, and gently notice response speed. No right or wrong, just relax!",
+      introText: "These are fun questions that look at your child's number sense from several angles, and gently notice response speed. No right or wrong, just relax!",
       introNote: "This check is designed from number-sense research, for reference only, and does not replace a professional diagnosis.",
       start: "Start Check",
       question: "Question {n}",
