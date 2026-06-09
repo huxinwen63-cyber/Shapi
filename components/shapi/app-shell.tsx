@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { AppHome } from "./app-home"
 import { PetScreen } from "./pet-screen"
+import { ExploreScreen } from "./explore-screen"
 import { WorldScreen } from "./world-screen"
 import { SubitizingGame } from "./subitizing-game"
 import { ComparisonGame } from "./comparison-game"
@@ -14,6 +15,7 @@ import { ParentDashboard } from "./parent-dashboard"
 type Screen =
   | "home"
   | "pet"
+  | "explore"
   | "world-perception"
   | "world-representation"
   | "world-operation"
@@ -50,6 +52,11 @@ export function AppShell() {
     setCurrentScreen("home")
   }
 
+  // Worlds return to the explore page
+  const handleWorldBack = () => {
+    setCurrentScreen("explore")
+  }
+
   // Activities return to their world; worlds return home
   const handleActivityBack = () => {
     const world = activityWorld[currentScreen]
@@ -64,14 +71,17 @@ export function AppShell() {
       {currentScreen === "pet" && (
         <PetScreen onBack={handleBack} />
       )}
+      {currentScreen === "explore" && (
+        <ExploreScreen onBack={handleBack} onNavigate={handleNavigate} />
+      )}
       {currentScreen === "world-perception" && (
-        <WorldScreen worldId="perception" onBack={handleBack} onNavigate={handleNavigate} />
+        <WorldScreen worldId="perception" onBack={handleWorldBack} onNavigate={handleNavigate} />
       )}
       {currentScreen === "world-representation" && (
-        <WorldScreen worldId="representation" onBack={handleBack} onNavigate={handleNavigate} />
+        <WorldScreen worldId="representation" onBack={handleWorldBack} onNavigate={handleNavigate} />
       )}
       {currentScreen === "world-operation" && (
-        <WorldScreen worldId="operation" onBack={handleBack} onNavigate={handleNavigate} />
+        <WorldScreen worldId="operation" onBack={handleWorldBack} onNavigate={handleNavigate} />
       )}
       {currentScreen === "subitizing" && (
         <SubitizingGame onBack={handleActivityBack} />

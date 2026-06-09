@@ -1,7 +1,7 @@
 "use client"
 
 import { useLanguage } from "@/lib/language-context"
-import { Star, ChevronRight, Settings } from "lucide-react"
+import { Star, ChevronRight, Settings, Compass } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { AnimatedCat } from "./animated-cat"
 
@@ -53,49 +53,26 @@ export function AppHome({ onNavigate }: AppHomeProps) {
         <ChevronRight className="w-5 h-5 text-muted-foreground" />
       </button>
 
-      {/* Worlds */}
-      <div className="mb-4">
-        <h2 className="text-lg font-semibold mb-1" suppressHydrationWarning>
-          {t.worlds.title}
-        </h2>
-        <p className="text-sm text-muted-foreground mb-4" suppressHydrationWarning>
-          {t.worlds.subtitle}
-        </p>
-        <div className="flex flex-col gap-4">
-          <WorldCard
-            color="bg-primary/10"
-            accent="text-primary"
-            number={1}
-            title={t.worlds.perception.title}
-            subtitle={t.worlds.perception.subtitle}
-            stars={5}
-            totalStars={6}
-            onClick={() => onNavigate("world-perception")}
-          />
-          <WorldCard
-            color="bg-secondary/30"
-            accent="text-secondary-foreground"
-            number={2}
-            title={t.worlds.representation.title}
-            subtitle={t.worlds.representation.subtitle}
-            stars={1}
-            totalStars={6}
-            onClick={() => onNavigate("world-representation")}
-          />
-          <WorldCard
-            color="bg-accent/20"
-            accent="text-accent-foreground"
-            number={3}
-            title={t.worlds.operation.title}
-            subtitle={t.worlds.operation.subtitle}
-            stars={0}
-            totalStars={6}
-            onClick={() => onNavigate("world-operation")}
-          />
+      {/* Explore Numbers - entry to the three worlds */}
+      <button
+        onClick={() => onNavigate("explore")}
+        className="bg-primary/10 rounded-3xl p-6 mb-4 flex items-center gap-4 text-left transition-transform active:scale-[0.98] hover:scale-[1.02]"
+      >
+        <div className="w-16 h-16 rounded-2xl bg-background/60 flex items-center justify-center shrink-0">
+          <Compass className="w-8 h-8 text-primary" />
         </div>
-      </div>
+        <div className="flex-1 min-w-0">
+          <h2 className="text-lg font-semibold text-primary mb-1" suppressHydrationWarning>
+            {t.app.explore}
+          </h2>
+          <p className="text-sm text-muted-foreground text-pretty" suppressHydrationWarning>
+            {t.app.exploreSubtitle}
+          </p>
+        </div>
+        <ChevronRight className="w-5 h-5 text-muted-foreground shrink-0" />
+      </button>
 
-      {/* Progress - directly after the three worlds */}
+      {/* Progress */}
       <button
         onClick={() => onNavigate("progress")}
         className="w-full bg-card border border-border rounded-2xl p-4 mb-2 flex items-center justify-between hover:bg-muted/50 transition-colors shrink-0"
@@ -114,51 +91,5 @@ export function AppHome({ onNavigate }: AppHomeProps) {
         <ChevronRight className="w-5 h-5 text-muted-foreground" />
       </button>
     </div>
-  )
-}
-
-function WorldCard({
-  color,
-  accent,
-  number,
-  title,
-  subtitle,
-  stars,
-  totalStars,
-  onClick,
-}: {
-  color: string
-  accent: string
-  number: number
-  title: string
-  subtitle: string
-  stars: number
-  totalStars: number
-  onClick: () => void
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className={`${color} rounded-3xl p-5 text-left transition-transform active:scale-[0.98] hover:scale-[1.02] flex items-center gap-4`}
-    >
-      <div className={`w-12 h-12 rounded-2xl bg-background/60 flex items-center justify-center font-bold text-xl ${accent} shrink-0`}>
-        {number}
-      </div>
-      <div className="flex-1 min-w-0">
-        <h3 className={`font-semibold text-base ${accent} mb-0.5`} suppressHydrationWarning>
-          {title}
-        </h3>
-        <p className="text-xs text-muted-foreground mb-2 text-pretty" suppressHydrationWarning>
-          {subtitle}
-        </p>
-        <div className="flex items-center gap-1">
-          <Star className={`w-3.5 h-3.5 ${accent} fill-current`} />
-          <span className="text-xs font-medium text-muted-foreground">
-            {stars} / {totalStars}
-          </span>
-        </div>
-      </div>
-      <ChevronRight className="w-5 h-5 text-muted-foreground shrink-0" />
-    </button>
   )
 }

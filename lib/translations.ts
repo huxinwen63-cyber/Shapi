@@ -11,6 +11,8 @@ export const translations = {
       progress: "学习进度",
       settings: "设置",
       parent: "家长入口",
+      explore: "探索数字",
+      exploreSubtitle: "和小猫一起开始今天的学习",
     },
     // Activities
     activities: {
@@ -166,6 +168,8 @@ export const translations = {
       progress: "Progress",
       settings: "Settings",
       parent: "Parent Mode",
+      explore: "Explore Numbers",
+      exploreSubtitle: "Start today's learning with Kitty",
     },
     // Activities
     activities: {
