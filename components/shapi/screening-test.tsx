@@ -186,6 +186,52 @@ function NumberLineVisual({ target }: { target: number }) {
 
 const dimensionOrder: Dimension[] = ["subitizing", "comparison", "numberLine", "matching", "ordering", "calculation"]
 
+// Research sources the screening design references
+const researchSources: { label: string; url: string }[] = [
+  { label: "Number sense & math learning (PMC11201520)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11201520/" },
+  { label: "Numerical cognition development (PMC10785441)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10785441/" },
+  { label: "Dyscalculia research (PubMed 30905334)", url: "https://pubmed.ncbi.nlm.nih.gov/30905334/" },
+  {
+    label: "Dyscalculia overview — NHS Just One Norfolk",
+    url: "https://www.justonenorfolk.nhs.uk/nd-digital-library/understanding-neurodiversity/specific-learning-difficulties-dyscalculia-dyslexia-dysgraphia/",
+  },
+  { label: "Dyscalculia — NCBI Bookshelf (NBK554371)", url: "https://www.ncbi.nlm.nih.gov/books/NBK554371/" },
+  { label: "Number sense modeling (arXiv 2201.00164)", url: "https://arxiv.org/abs/2201.00164" },
+  { label: "Numerical reasoning (arXiv 2010.06047)", url: "https://arxiv.org/abs/2010.06047" },
+  { label: "What is dyscalculia? — LDA America", url: "https://ldaamerica.org/what-is-dyscalculia/" },
+]
+
+function ResearchBasis() {
+  const { t } = useLanguage()
+  return (
+    <div className="bg-card border border-border rounded-2xl p-4 text-left">
+      <h3 className="text-sm font-semibold text-foreground mb-2" suppressHydrationWarning>
+        {t.screening.researchTitle}
+      </h3>
+      <p className="text-xs text-muted-foreground leading-relaxed mb-3" suppressHydrationWarning>
+        {t.screening.researchText}
+      </p>
+      <p className="text-xs font-medium text-muted-foreground mb-1.5" suppressHydrationWarning>
+        {t.screening.researchSources}
+      </p>
+      <ul className="flex flex-col gap-1.5">
+        {researchSources.map((s) => (
+          <li key={s.url}>
+            <a
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-primary underline underline-offset-2 hover:text-primary/80 break-words"
+            >
+              {s.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 export function ScreeningTest({ onBack }: ScreeningTestProps) {
   const { t, locale } = useLanguage()
   const [stage, setStage] = useState<"intro" | "quiz" | "result">("intro")
@@ -256,6 +302,9 @@ export function ScreeningTest({ onBack }: ScreeningTestProps) {
           <Button onClick={startQuiz} className="rounded-full px-10 py-6 text-base" size="lg">
             <span suppressHydrationWarning>{t.screening.start}</span>
           </Button>
+          <div className="w-full max-w-sm mt-8">
+            <ResearchBasis />
+          </div>
         </div>
       </div>
     )
@@ -370,6 +419,10 @@ export function ScreeningTest({ onBack }: ScreeningTestProps) {
           <p className="text-xs text-muted-foreground/70 mb-6 text-pretty leading-relaxed" suppressHydrationWarning>
             {t.screening.disclaimer}
           </p>
+
+          <div className="mb-6">
+            <ResearchBasis />
+          </div>
 
           <div className="flex flex-col gap-3">
             <Button onClick={resetTest} variant="outline" className="rounded-full">
