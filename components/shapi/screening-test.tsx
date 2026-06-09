@@ -113,8 +113,8 @@ const questions: Question[] = [
   },
   {
     dimension: "calculation",
-    prompt: { zh: "5 减 2 等于几？", en: "What is 5 − 2?" },
-    options: ["2", "3", "4"],
+    prompt: { zh: "13 减 7 等于几？", en: "What is 13 − 7?" },
+    options: ["5", "6", "7"],
     answer: 1,
   },
 ]
