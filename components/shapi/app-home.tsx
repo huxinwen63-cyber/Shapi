@@ -95,26 +95,24 @@ export function AppHome({ onNavigate }: AppHomeProps) {
         </div>
       </div>
 
-      {/* Bottom Nav */}
-      <div className="mt-auto pt-4">
-        <button
-          onClick={() => onNavigate("progress")}
-          className="w-full bg-card border border-border rounded-2xl p-4 flex items-center justify-between hover:bg-muted/50 transition-colors"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
-              <Star className="w-5 h-5 text-primary" />
-            </div>
-            <div className="text-left">
-              <p className="font-medium text-foreground" suppressHydrationWarning>
-                {t.app.progress}
-              </p>
-              <p className="text-sm text-muted-foreground">12 / 20</p>
-            </div>
+      {/* Progress - directly after the three worlds */}
+      <button
+        onClick={() => onNavigate("progress")}
+        className="w-full bg-card border border-border rounded-2xl p-4 flex items-center justify-between hover:bg-muted/50 transition-colors"
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+            <Star className="w-5 h-5 text-primary" />
           </div>
-          <ChevronRight className="w-5 h-5 text-muted-foreground" />
-        </button>
-      </div>
+          <div className="text-left">
+            <p className="font-medium text-foreground" suppressHydrationWarning>
+              {t.app.progress}
+            </p>
+            <p className="text-sm text-muted-foreground">12 / 20</p>
+          </div>
+        </div>
+        <ChevronRight className="w-5 h-5 text-muted-foreground" />
+      </button>
     </div>
   )
 }
