@@ -249,14 +249,7 @@ export function ScreeningTest({ onBack }: ScreeningTestProps) {
     // only set once per question render where unanswered
   }
 
-  const handleSelect = (i: number) => {
-    if (selected !== null) return
-    const ms = Date.now() - startRef.current
-    setSelected(i)
-    setRecords((r) => [...r, { dimension: q.dimension, correct: i === q.answer, ms }])
-  }
-
-  const handleNext = () => {
+  const advance = () => {
     if (isLast) {
       setStage("result")
     } else {
@@ -264,6 +257,15 @@ export function ScreeningTest({ onBack }: ScreeningTestProps) {
       setSelected(null)
       startRef.current = Date.now()
     }
+  }
+
+  const handleSelect = (i: number) => {
+    if (selected !== null) return
+    const ms = Date.now() - startRef.current
+    setSelected(i)
+    setRecords((r) => [...r, { dimension: q.dimension, correct: i === q.answer, ms }])
+    // Auto-advance after a brief feedback flash — no need to tap Next
+    window.setTimeout(advance, 900)
   }
 
   const startQuiz = () => {
@@ -515,13 +517,10 @@ export function ScreeningTest({ onBack }: ScreeningTestProps) {
           })}
         </div>
 
-        {/* Feedback + next */}
+        {/* Feedback — auto-advances to next question */}
         {selected !== null && (
           <div className="mt-8 text-center animate-in fade-in slide-in-from-bottom-4 duration-300">
-            <div className="text-3xl mb-3">{selected === q.answer ? "✨" : "💭"}</div>
-            <Button onClick={handleNext} className="rounded-full px-8">
-              <span suppressHydrationWarning>{isLast ? t.screening.finish : t.screening.next}</span>
-            </Button>
+            <div className="text-3xl">{selected === q.answer ? "✨" : "💭"}</div>
           </div>
         )}
       </div>
