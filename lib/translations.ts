@@ -29,6 +29,11 @@ export const translations = {
         subtitle: "哪边更多",
         description: "比较两组数量的大小",
       },
+      matching: {
+        title: "数字配对",
+        subtitle: "找到一样多的",
+        description: "把数字和对应的数量配在一起",
+      },
       numberLine: {
         title: "数轴探险",
         subtitle: "数字住在哪里",
@@ -54,18 +59,55 @@ export const translations = {
     worlds: {
       title: "三个世界",
       subtitle: "和小猫一起探索数字",
+      objectiveLabel: "学习目标",
+      skillsLabel: "涵盖技能",
       perception: {
         title: "看见数量",
         subtitle: "用眼睛感受多和少",
+        objective: "孩子能不靠逐个点数，一眼看出小数量（1-5），并能比较两组物品哪边更多、哪边更少。",
+        skills: ["快速识数", "数量比较", "一一对应", "多与少"],
       },
       representation: {
         title: "数字的家",
         subtitle: "认识数字住在哪里",
+        objective: "孩子能把数字和它在数轴上的位置对应起来，理解数字的顺序与大小关系，认识十位和个位。",
+        skills: ["数轴定位", "数序排列", "数字大小", "位值认识"],
       },
       operation: {
         title: "数字魔法",
         subtitle: "把数字拆开又合起来",
+        objective: "孩子能把一个数拆成两部分、再合起来，并借助图形完成 10 以内的加减法。",
+        skills: ["凑十拆分", "部分与整体", "加法", "减法"],
       },
+    },
+    // Curriculum map
+    curriculum: {
+      title: "课程地图",
+      subtitle: "游戏、技能与学习成果一览",
+      entry: "查看课程地图",
+      gamesLabel: "游戏",
+      skillsLabel: "技能",
+      outcomeLabel: "预期成果",
+      units: [
+        {
+          unit: "看见数量",
+          games: ["快速识数", "比多少", "数字配对"],
+          skills: ["快速识数", "数量比较", "数字配对"],
+          outcome: "能不数一个个就看出 1-5 的数量，并判断哪组更多。",
+        },
+        {
+          unit: "数字的家",
+          games: ["数轴探险", "十和一"],
+          skills: ["数轴定位", "数序", "位值"],
+          outcome: "能把数字放到数轴正确位置，理解数字的顺序和大小。",
+        },
+        {
+          unit: "数字魔法",
+          games: ["凑十拆分", "轻松算术"],
+          skills: ["部分与整体", "加法", "减法"],
+          outcome: "能拆分与合并数字，完成 10 以内的加减法。",
+        },
+      ],
     },
     // Pet/Character
     pet: {
@@ -96,6 +138,25 @@ export const translations = {
       streakDays: "连续天数",
       level: "等级",
       starsEarned: "获得星星",
+      badgesTitle: "我的徽章",
+      avatarsTitle: "我的伙伴",
+      pointsTitle: "我的积分",
+      earned: "已获得",
+      points: "积分",
+      badges: [
+        { name: "初次见面", desc: "完成第一个活动" },
+        { name: "火眼金睛", desc: "识数游戏答对 10 次" },
+        { name: "比较高手", desc: "比多少全部答对" },
+        { name: "配对达人", desc: "完成数字配对游戏" },
+        { name: "数轴向导", desc: "在数轴上找对 10 次" },
+        { name: "七日之星", desc: "连续学习 7 天" },
+      ],
+      avatars: [
+        { name: "小猫咪" },
+        { name: "小兔子" },
+        { name: "小狐狸" },
+        { name: "小熊猫" },
+      ],
     },
     // Game UI
     game: {
@@ -111,6 +172,14 @@ export const translations = {
       tapAnswer: "点击答案",
       dragHere: "拖到这里",
       back: "返回",
+      howToPlay: "怎么玩",
+      gotIt: "我知道了",
+      matchPrompt: "哪一组刚好有 {n} 个？",
+      matchHint: "点一点和数字一样多的那一组",
+      numberLinePrompt: "数字 {n} 住在数轴的哪里？",
+      numberLineHint: "点一点数字应该在的位置",
+      matchInstruction: "看看中间的数字，点出下面和它一样多的那一组点点。",
+      numberLineInstruction: "看看上面的数字，点一点它在数轴上应该住的位置。",
     },
     // Settings
     settings: {
@@ -228,6 +297,11 @@ export const translations = {
         subtitle: "Which side has more",
         description: "Compare two groups of objects",
       },
+      matching: {
+        title: "Number Match",
+        subtitle: "Find the same amount",
+        description: "Match a number to the right amount",
+      },
       numberLine: {
         title: "Number Line",
         subtitle: "Where do numbers live",
@@ -253,18 +327,55 @@ export const translations = {
     worlds: {
       title: "Three Worlds",
       subtitle: "Explore numbers with Kitty",
+      objectiveLabel: "Learning Objective",
+      skillsLabel: "Skills Covered",
       perception: {
         title: "See Numbers",
         subtitle: "Feel more and less with your eyes",
+        objective: "The child can instantly recognize small quantities (1-5) without counting one by one, and can tell which of two groups has more or fewer.",
+        skills: ["Subitizing", "Magnitude Comparison", "One-to-One Matching", "More & Less"],
       },
       representation: {
         title: "Where Numbers Live",
         subtitle: "Learn where numbers belong",
+        objective: "The child can match a number to its place on the number line, understand number order and size, and recognize tens and ones.",
+        skills: ["Number Line", "Ordering", "Number Size", "Place Value"],
       },
       operation: {
         title: "Number Magic",
         subtitle: "Break numbers apart and put them together",
+        objective: "The child can break a number into two parts and combine them again, and complete addition and subtraction within 10 with visual support.",
+        skills: ["Make & Break", "Part-Whole", "Addition", "Subtraction"],
       },
+    },
+    // Curriculum map
+    curriculum: {
+      title: "Curriculum Map",
+      subtitle: "Games, skills, and learning outcomes at a glance",
+      entry: "View Curriculum Map",
+      gamesLabel: "Games",
+      skillsLabel: "Skills",
+      outcomeLabel: "Expected Outcome",
+      units: [
+        {
+          unit: "See Numbers",
+          games: ["Quick Count", "More or Less", "Number Match"],
+          skills: ["Subitizing", "Comparison", "Matching"],
+          outcome: "Can recognize 1-5 without counting one by one and tell which group has more.",
+        },
+        {
+          unit: "Where Numbers Live",
+          games: ["Number Line", "Tens & Ones"],
+          skills: ["Number Line", "Ordering", "Place Value"],
+          outcome: "Can place numbers correctly on the line and understand order and size.",
+        },
+        {
+          unit: "Number Magic",
+          games: ["Make & Break", "Easy Math"],
+          skills: ["Part-Whole", "Addition", "Subtraction"],
+          outcome: "Can break and combine numbers and add or subtract within 10.",
+        },
+      ],
     },
     // Pet/Character
     pet: {
@@ -295,6 +406,25 @@ export const translations = {
       streakDays: "Day Streak",
       level: "Level",
       starsEarned: "Stars Earned",
+      badgesTitle: "My Badges",
+      avatarsTitle: "My Companions",
+      pointsTitle: "My Points",
+      earned: "Earned",
+      points: "points",
+      badges: [
+        { name: "First Steps", desc: "Finish your first activity" },
+        { name: "Sharp Eyes", desc: "Get 10 right in Quick Count" },
+        { name: "Compare Pro", desc: "Ace the More or Less game" },
+        { name: "Match Master", desc: "Finish the Number Match game" },
+        { name: "Line Guide", desc: "Place 10 numbers correctly" },
+        { name: "7-Day Star", desc: "Learn 7 days in a row" },
+      ],
+      avatars: [
+        { name: "Kitty" },
+        { name: "Bunny" },
+        { name: "Fox" },
+        { name: "Panda" },
+      ],
     },
     // Game UI
     game: {
@@ -310,6 +440,14 @@ export const translations = {
       tapAnswer: "Tap your answer",
       dragHere: "Drag here",
       back: "Back",
+      howToPlay: "How to play",
+      gotIt: "Got it",
+      matchPrompt: "Which group has exactly {n}?",
+      matchHint: "Tap the group that matches the number",
+      numberLinePrompt: "Where does {n} live on the line?",
+      numberLineHint: "Tap where the number belongs",
+      matchInstruction: "Look at the number in the middle. Tap the group of dots that has the same amount.",
+      numberLineInstruction: "Look at the number on top. Tap where it should live on the line.",
     },
     // Settings
     settings: {

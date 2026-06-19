@@ -1,7 +1,8 @@
 "use client"
 
+import Image from "next/image"
 import { useLanguage } from "@/lib/language-context"
-import { ArrowLeft, Star, Flame, Trophy, Sparkles } from "lucide-react"
+import { ArrowLeft, Star, Flame, Trophy, Sparkles, Award, Lock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 interface ProgressScreenProps {
@@ -20,10 +21,16 @@ export function ProgressScreen({ onBack }: ProgressScreenProps) {
 
   const activities = [
     { name: t.activities.subitizing.title, progress: 80, stars: 3 },
-    { name: t.activities.partWhole.title, progress: 60, stars: 2 },
-    { name: t.activities.spatial.title, progress: 40, stars: 1 },
-    { name: t.activities.matching.title, progress: 20, stars: 0 },
+    { name: t.activities.comparison.title, progress: 60, stars: 2 },
+    { name: t.activities.matching.title, progress: 40, stars: 1 },
+    { name: t.activities.numberLine.title, progress: 20, stars: 0 },
   ]
+
+  // Reward system: points, earned badges, unlocked avatars
+  const totalPoints = 47
+  const earnedBadges = [true, true, true, false, false, false]
+  const avatarImages = ["/avatars/kitty.png", "/avatars/bunny.png", "/avatars/fox.png", "/avatars/panda.png"]
+  const unlockedAvatars = [true, true, false, false]
 
   return (
     <div className="flex flex-col h-full bg-background">
@@ -108,6 +115,92 @@ export function ProgressScreen({ onBack }: ProgressScreenProps) {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Points */}
+        <div className="mt-8 bg-amber-100 rounded-2xl p-5 flex items-center gap-4">
+          <div className="w-12 h-12 rounded-2xl bg-amber-400/30 flex items-center justify-center">
+            <Sparkles className="w-6 h-6 text-amber-600" />
+          </div>
+          <div>
+            <p className="text-sm text-amber-700/80" suppressHydrationWarning>
+              {t.progress.pointsTitle}
+            </p>
+            <p className="text-2xl font-bold text-amber-700">
+              {totalPoints} <span className="text-base font-medium" suppressHydrationWarning>{t.progress.points}</span>
+            </p>
+          </div>
+        </div>
+
+        {/* Badges */}
+        <div className="mt-8">
+          <h2 className="text-lg font-semibold mb-4" suppressHydrationWarning>
+            {t.progress.badgesTitle}
+          </h2>
+          <div className="grid grid-cols-3 gap-3">
+            {t.progress.badges.map((badge, index) => {
+              const earned = earnedBadges[index]
+              return (
+                <div
+                  key={index}
+                  className={`flex flex-col items-center text-center rounded-2xl p-3 border ${
+                    earned ? "bg-card border-primary/30" : "bg-muted/40 border-border opacity-60"
+                  }`}
+                >
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center mb-2 ${
+                      earned ? "bg-primary/15 text-primary" : "bg-muted text-muted-foreground"
+                    }`}
+                  >
+                    {earned ? <Award className="w-6 h-6" /> : <Lock className="w-5 h-5" />}
+                  </div>
+                  <span className="text-xs font-semibold leading-tight" suppressHydrationWarning>
+                    {badge.name}
+                  </span>
+                  <span className="text-[10px] text-muted-foreground leading-tight mt-0.5" suppressHydrationWarning>
+                    {badge.desc}
+                  </span>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Avatars */}
+        <div className="mt-8 mb-4">
+          <h2 className="text-lg font-semibold mb-4" suppressHydrationWarning>
+            {t.progress.avatarsTitle}
+          </h2>
+          <div className="grid grid-cols-4 gap-3">
+            {t.progress.avatars.map((avatar, index) => {
+              const unlocked = unlockedAvatars[index]
+              return (
+                <div key={index} className="flex flex-col items-center gap-1.5">
+                  <div
+                    className={`relative w-16 h-16 rounded-2xl overflow-hidden border-2 ${
+                      unlocked ? "border-primary" : "border-border"
+                    }`}
+                  >
+                    <Image
+                      src={avatarImages[index] || "/placeholder.svg"}
+                      alt={avatar.name}
+                      fill
+                      className={`object-cover ${unlocked ? "" : "grayscale opacity-40"}`}
+                      sizes="64px"
+                    />
+                    {!unlocked && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-background/40">
+                        <Lock className="w-5 h-5 text-muted-foreground" />
+                      </div>
+                    )}
+                  </div>
+                  <span className="text-xs font-medium" suppressHydrationWarning>
+                    {avatar.name}
+                  </span>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>

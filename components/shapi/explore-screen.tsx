@@ -1,7 +1,7 @@
 "use client"
 
 import { useLanguage } from "@/lib/language-context"
-import { Star, ChevronRight, ArrowLeft } from "lucide-react"
+import { Star, ChevronRight, ArrowLeft, Map } from "lucide-react"
 
 interface ExploreScreenProps {
   onBack: () => void
@@ -65,6 +65,22 @@ export function ExploreScreen({ onBack, onNavigate }: ExploreScreenProps) {
           onClick={() => onNavigate("world-operation")}
         />
       </div>
+
+      {/* Curriculum map entry */}
+      <button
+        onClick={() => onNavigate("curriculum")}
+        className="mt-4 bg-card border border-border rounded-2xl p-4 flex items-center justify-between hover:bg-muted/50 transition-colors"
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center shrink-0">
+            <Map className="w-5 h-5 text-foreground" />
+          </div>
+          <span className="font-medium text-foreground text-sm" suppressHydrationWarning>
+            {t.curriculum.entry}
+          </span>
+        </div>
+        <ChevronRight className="w-5 h-5 text-muted-foreground shrink-0" />
+      </button>
     </div>
   )
 }

@@ -4,9 +4,12 @@ import { useState } from "react"
 import { AppHome } from "./app-home"
 import { PetScreen } from "./pet-screen"
 import { ExploreScreen } from "./explore-screen"
+import { CurriculumMap } from "./curriculum-map"
 import { WorldScreen } from "./world-screen"
 import { SubitizingGame } from "./subitizing-game"
 import { ComparisonGame } from "./comparison-game"
+import { MatchingGame } from "./matching-game"
+import { NumberLineGame } from "./number-line-game"
 import { ProgressScreen } from "./progress-screen"
 import { ScreeningTest } from "./screening-test"
 import { SettingsScreen } from "./settings-screen"
@@ -17,11 +20,13 @@ type Screen =
   | "home"
   | "pet"
   | "explore"
+  | "curriculum"
   | "world-perception"
   | "world-representation"
   | "world-operation"
   | "subitizing"
   | "comparison"
+  | "matching"
   | "numberLine"
   | "partWhole"
   | "placeValue"
@@ -40,6 +45,7 @@ export function AppShell() {
   const activityWorld: Record<string, Screen> = {
     subitizing: "world-perception",
     comparison: "world-perception",
+    matching: "world-perception",
     numberLine: "world-representation",
     placeValue: "world-representation",
     partWhole: "world-operation",
@@ -76,6 +82,9 @@ export function AppShell() {
       {currentScreen === "explore" && (
         <ExploreScreen onBack={handleBack} onNavigate={handleNavigate} />
       )}
+      {currentScreen === "curriculum" && (
+        <CurriculumMap onBack={() => setCurrentScreen("explore")} />
+      )}
       {currentScreen === "world-perception" && (
         <WorldScreen worldId="perception" onBack={handleWorldBack} onNavigate={handleNavigate} />
       )}
@@ -91,7 +100,13 @@ export function AppShell() {
       {currentScreen === "comparison" && (
         <ComparisonGame onBack={handleActivityBack} />
       )}
-      {(currentScreen === "numberLine" || currentScreen === "partWhole" || currentScreen === "placeValue" || currentScreen === "addSub") && (
+      {currentScreen === "matching" && (
+        <MatchingGame onBack={handleActivityBack} />
+      )}
+      {currentScreen === "numberLine" && (
+        <NumberLineGame onBack={handleActivityBack} />
+      )}
+      {(currentScreen === "partWhole" || currentScreen === "placeValue" || currentScreen === "addSub") && (
         <div className="flex flex-col h-full items-center justify-center p-8 text-center">
           <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mb-4">
             <span className="text-3xl">🚧</span>

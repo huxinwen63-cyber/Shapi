@@ -13,11 +13,12 @@ interface WorldScreenProps {
 
 const worldActivities: Record<
   WorldId,
-  { key: "subitizing" | "comparison" | "numberLine" | "partWhole" | "placeValue" | "addSub"; screen: string; locked?: boolean }[]
+  { key: "subitizing" | "comparison" | "matching" | "numberLine" | "partWhole" | "placeValue" | "addSub"; screen: string; locked?: boolean }[]
 > = {
   perception: [
     { key: "subitizing", screen: "subitizing" },
     { key: "comparison", screen: "comparison" },
+    { key: "matching", screen: "matching" },
   ],
   representation: [
     { key: "numberLine", screen: "numberLine" },
@@ -67,8 +68,32 @@ export function WorldScreen({ worldId, onBack, onNavigate }: WorldScreenProps) {
         </div>
       </div>
 
+      {/* Learning objective + skills */}
+      <div className={`${style.bg} rounded-3xl p-5 mb-6`}>
+        <p className={`text-xs font-semibold uppercase tracking-wide mb-1.5 ${style.accent}`} suppressHydrationWarning>
+          {t.worlds.objectiveLabel}
+        </p>
+        <p className="text-sm text-foreground leading-relaxed mb-4 text-pretty" suppressHydrationWarning>
+          {world.objective}
+        </p>
+        <p className={`text-xs font-semibold uppercase tracking-wide mb-2 ${style.accent}`} suppressHydrationWarning>
+          {t.worlds.skillsLabel}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {world.skills.map((skill) => (
+            <span
+              key={skill}
+              className="text-xs font-medium bg-background/70 text-foreground rounded-full px-3 py-1"
+              suppressHydrationWarning
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* Activities */}
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 overflow-auto">
         {activities.map((activity) => {
           const info = t.activities[activity.key]
           return (
