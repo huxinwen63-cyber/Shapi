@@ -37,41 +37,39 @@ export function EmojiFace({ color, mood = "smile", size = 64, locked = false, cl
       aria-hidden="true"
     >
       <svg viewBox="0 0 100 100" width={size} height={size} style={{ display: "block" }}>
-        {/* Face outline */}
-        <circle cx="50" cy="50" r="44" {...stroke} />
-
-        {/* Eyes */}
-        {mood === "cool" ? (
-          // Sunglasses drawn as lines
+        {/* Eyes — no face outline, features only */}
+        {mood === "happy" ? (
+          // Closed happy curve eyes
           <g {...stroke}>
-            <path d="M22 42 h22 v8 a6 6 0 0 1 -22 1 Z" />
-            <path d="M56 42 h22 v9 a6 6 0 0 1 -22 -1 Z" />
-            <path d="M44 44 h12" />
+            <path d="M30 44 Q37 38 44 44" />
+            <path d="M56 44 Q63 38 70 44" />
           </g>
         ) : mood === "wow" ? (
+          // Round dot eyes
           <g {...stroke}>
-            <circle cx="37" cy="43" r="5" />
-            <circle cx="63" cy="43" r="5" />
+            <circle cx="37" cy="44" r="4" />
+            <circle cx="63" cy="44" r="4" />
+          </g>
+        ) : mood === "cool" ? (
+          // Sparkle eyes
+          <g {...stroke}>
+            <path d="M37 38 v12 M31 44 h12" />
+            <path d="M63 38 v12 M57 44 h12" />
           </g>
         ) : (
+          // Simple line/dot eyes that blink
           <g
             {...stroke}
             className={!locked ? "animate-blink" : undefined}
             style={{ ...stroke.style, transformBox: "fill-box", transformOrigin: "center" }}
           >
-            <path d="M37 43 v0.5" />
-            <path d="M63 43 v0.5" />
+            <path d="M37 42 v6" />
+            <path d="M63 42 v6" />
           </g>
         )}
 
-        {/* Mouth */}
-        {mood === "wow" ? (
-          <circle cx="50" cy="68" r="9" {...stroke} />
-        ) : mood === "happy" ? (
-          <path d="M30 60 Q50 84 70 60" {...stroke} />
-        ) : (
-          <path d="M33 64 Q50 78 67 64" {...stroke} />
-        )}
+        {/* Mouth — gentle smile curve */}
+        <path d="M33 60 Q50 76 67 60" {...stroke} />
       </svg>
     </div>
   )
