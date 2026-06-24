@@ -2,6 +2,13 @@ export type Locale = "zh" | "en"
 
 export const translations = {
   zh: {
+    // Welcome / opening screen
+    welcome: {
+      appName: "Shapi",
+      tagline: "和小猫一起，爱上数字",
+      subtitle: "为 5-7 岁孩子打造的数感启蒙乐园",
+      start: "开始探索",
+    },
     // App Home
     app: {
       greeting: "你好",
@@ -259,7 +266,7 @@ export const translations = {
       dim_ordering: "数序排列",
       dim_calculation: "简单运算",
       speedNote: "反应速度也是数感的重要信号——即使答对，反应偏慢也值得留意。",
-      disclaimer: "本结果仅供家长参考，不构成医学诊断。如有顾虑请咨询专业人士。",
+      disclaimer: "本结果仅供家长参考，不��成医学诊断。如有顾虑请咨询专业人士。",
       researchTitle: "研究依据",
       researchText: "本测验的题目设计参考了数感发展与计算障碍（dyscalculia）相关的研究文献，涵盖快速识数、数量比较、数轴、点数对应、数序和简单运算等核心能力维度。",
       researchSources: "参考资料",
@@ -270,6 +277,13 @@ export const translations = {
     langToggle: "English",
   },
   en: {
+    // Welcome / opening screen
+    welcome: {
+      appName: "Shapi",
+      tagline: "Fall in love with numbers, with Kitty",
+      subtitle: "A playful number-sense world for ages 5-7",
+      start: "Start Exploring",
+    },
     // App Home
     app: {
       greeting: "Hello",

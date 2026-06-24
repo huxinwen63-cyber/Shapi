@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { WelcomeScreen } from "./welcome-screen"
 import { AppHome } from "./app-home"
 import { PetScreen } from "./pet-screen"
 import { ExploreScreen } from "./explore-screen"
@@ -17,6 +18,7 @@ import { ParentLogin } from "./parent-login"
 import { ParentDashboard } from "./parent-dashboard"
 
 type Screen =
+  | "welcome"
   | "home"
   | "pet"
   | "explore"
@@ -38,7 +40,7 @@ type Screen =
   | "parentDashboard"
 
 export function AppShell() {
-  const [currentScreen, setCurrentScreen] = useState<Screen>("home")
+  const [currentScreen, setCurrentScreen] = useState<Screen>("welcome")
   const [parentEmail, setParentEmail] = useState<string | null>(null)
 
   // Map each activity back to the world it lives in
@@ -73,6 +75,9 @@ export function AppShell() {
 
   return (
     <div className="w-full max-w-md mx-auto h-[100dvh] bg-background overflow-hidden shadow-2xl">
+      {currentScreen === "welcome" && (
+        <WelcomeScreen onStart={() => setCurrentScreen("home")} />
+      )}
       {currentScreen === "home" && (
         <AppHome onNavigate={handleNavigate} />
       )}
