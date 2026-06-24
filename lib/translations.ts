@@ -3,15 +3,85 @@ export type Locale = "zh" | "en"
 export const translations = {
   zh: {
     // Welcome / opening screen
-    welcome: {
-      appName: "Numi",
-      tagline: "爱上数字，从这里开始",
-      subtitle: "为孩子打造的数感启蒙乐园",
-      start: "开始探索",
+  welcome: {
+  appName: "Numi",
+  tagline: "爱上数字，从这里开始",
+  subtitle: "为孩子打造的数感启蒙乐园",
+  start: "开始探索",
+  },
+  // Walkthrough / onboarding
+  walkthrough: {
+  skip: "跳过",
+  next: "下一步",
+  done: "开始玩吧",
+  forKids: "给小朋友",
+  forParents: "给爸爸妈妈",
+  steps: [
+    {
+      audience: "给小朋友",
+      title: "三个数字世界",
+      text: "看见数量、数字的家、数字魔法——一关一关地探索，认识数字的好朋友。",
     },
-    // App Home
-    app: {
-      greeting: "你好",
+    {
+      audience: "给小朋友",
+      title: "玩游戏，得星星",
+      text: "每个小游戏都有有趣的题目，答对就能收集星星，越玩越棒！",
+    },
+    {
+      audience: "给小朋友",
+      title: "表情会长大",
+      text: "每完成一个世界，你的表情伙伴就会换上新颜色，还会解锁更多表情。",
+    },
+    {
+      audience: "给爸爸妈妈",
+      title: "随时看见进步",
+      text: "在家长中心查看学习时长、完成情况和各项数感技能的进展。",
+    },
+    {
+      audience: "给爸爸妈妈",
+      title: "每月学习报告",
+      text: "登录后可订阅月度报告，了解孩子的成长，并获得个性化练习建议。",
+    },
+  ],
+  },
+  // Educator / partner hub + feature documentation
+  educator: {
+  title: "教育者专区",
+  subtitle: "给老师与合作机构的介绍",
+  introTitle: "Numi 是什么",
+  introText: "Numi 是一款面向 4-7 岁儿童的数感启蒙应用，把数感研究中的关键能力拆解成有趣的小游戏，帮助孩子在玩中建立对数字的直觉。",
+  pedagogyTitle: "教学理念",
+  pedagogyText: "数感（Number Sense）是数学学习的基础。Numi 围绕「感知数量、表征数字、运算变换」三条主线设计活动，强调具象操作、即时反馈和无压力练习，避免机械记忆。",
+  unitsTitle: "三个学习单元",
+  featuresTitle: "核心功能",
+  features: [
+    { title: "互动小游戏", desc: "识数、比多少、配对、数轴、拆分、位值等多款游戏，自动生成题目。" },
+    { title: "双语支持", desc: "中英文一键切换，适合双语家庭与国际课堂。" },
+    { title: "表情与奖励", desc: "星星、徽章和会成长的表情伙伴，激励持续学习。" },
+    { title: "家长中心", desc: "查看学习时长、完成度与技能进展。" },
+    { title: "月度报告", desc: "每月汇总孩子的成长并给出个性化练习建议。" },
+    { title: "数感小测验", desc: "多维度的自评测验，帮助了解孩子的数感发展。" },
+  ],
+  classroomTitle: "如何在课堂/机构中使用",
+  classroomSteps: [
+    "按单元顺序带领孩子探索三个世界，每次聚焦一项技能。",
+    "用数感小测验做课前/课后对比，观察成长。",
+    "鼓励家长开启家长中心，配合家庭练习。",
+  ],
+  roadmapTitle: "未来改进方向",
+  roadmap: [
+    "完成「轻松算术」加减法游戏，补齐第三单元。",
+    "接入真实账户与云端进度同步。",
+    "为每个孩子生成自适应的练习推荐。",
+    "增加教师后台，支持班级管理与批量报告。",
+    "加入语音朗读与无障碍支持。",
+  ],
+  contactTitle: "合作咨询",
+  contactText: "如果您是学校或教育机构，欢迎联系我们开展试点合作。",
+  },
+  // App Home
+  app: {
+  greeting: "你好",
       defaultName: "小朋友",
       todayActivity: "今天学什么",
       myPet: "我的伙伴",
@@ -20,9 +90,11 @@ export const translations = {
       parent: "家长入口",
       explore: "探索数字",
       exploreSubtitle: "开始今天的数字学习",
-      screening: "数感小测验",
-      screeningSubtitle: "趣味题目，从多角度了解数感",
-    },
+    screening: "数感小测验",
+    screeningSubtitle: "趣味题目，从多角度了解数感",
+    comingSoon: "即将推出",
+    comingSoonDesc: "这个活动正在开发中",
+  },
     // Activities
     activities: {
       title: "选择活动",
@@ -192,16 +264,24 @@ export const translations = {
       numberLineHint: "点一点数字应该在的位置",
       matchInstruction: "看看中间的数字，点出下面和它一样多的那一组点点。",
       numberLineInstruction: "看看上面的数字，点一点它在数轴上应该住的位置。",
+      partWholePrompt: "{n} 可以拆成 {a} 和几？",
+      partWholeHint: "点一点缺少的那个数字",
+      partWholeInstruction: "上面一共有 {n} 个，左边已经放了一些，想一想右边还要放几个才够 {n} 个。",
+      placeValuePrompt: "数字 {n} 有几个十、几个一？",
+      placeValueHint: "先放十位的小棒，再放个位的点点",
+      placeValueInstruction: "把数字 {n} 拆开：一捆小棒是十，单个的点是一。点一点正确的组合。",
     },
     // Settings
     settings: {
       title: "设置",
-      language: "语言",
-      sound: "声音",
-      music: "音乐",
-      notifications: "通知",
-      parentMode: "家长模式",
-    },
+    language: "语言",
+    sound: "声音",
+    music: "音乐",
+    notifications: "通知",
+    parentMode: "家长模式",
+    howItWorks: "使用说明",
+    forEducators: "教育者专区",
+  },
     // Parent Mode
     parent: {
       title: "家长模式",
@@ -283,15 +363,85 @@ export const translations = {
   },
   en: {
     // Welcome / opening screen
-    welcome: {
-      appName: "Numi",
-      tagline: "Fall in love with numbers",
-      subtitle: "A playful number-sense world for kids",
-      start: "Start Exploring",
+  welcome: {
+  appName: "Numi",
+  tagline: "Fall in love with numbers",
+  subtitle: "A playful number-sense world for kids",
+  start: "Start Exploring",
+  },
+  // Walkthrough / onboarding
+  walkthrough: {
+  skip: "Skip",
+  next: "Next",
+  done: "Let's Play",
+  forKids: "For Kids",
+  forParents: "For Parents",
+  steps: [
+    {
+      audience: "For Kids",
+      title: "Three Number Worlds",
+      text: "See Numbers, Where Numbers Live, and Number Magic — explore them one by one and make friends with numbers.",
     },
-    // App Home
-    app: {
-      greeting: "Hello",
+    {
+      audience: "For Kids",
+      title: "Play Games, Earn Stars",
+      text: "Every mini-game has fun questions. Answer correctly to collect stars and get even better!",
+    },
+    {
+      audience: "For Kids",
+      title: "Your Face Grows",
+      text: "Finish a world and your face buddy gets a new color — plus you unlock more expressions.",
+    },
+    {
+      audience: "For Parents",
+      title: "See Progress Anytime",
+      text: "Open the Parent Center to track learning time, completed activities, and number-sense skills.",
+    },
+    {
+      audience: "For Parents",
+      title: "Monthly Learning Report",
+      text: "Sign in to subscribe to a monthly report on your child's growth, with personalized practice tips.",
+    },
+  ],
+  },
+  // Educator / partner hub + feature documentation
+  educator: {
+  title: "For Educators",
+  subtitle: "An overview for teachers and partner organizations",
+  introTitle: "What is Numi",
+  introText: "Numi is a number-sense app for children aged 4-7. It breaks the key skills from number-sense research into playful mini-games, helping kids build an intuition for numbers through play.",
+  pedagogyTitle: "Our Approach",
+  pedagogyText: "Number sense is the foundation of math learning. Numi's activities follow three threads — perceiving quantity, representing numbers, and operating on them — emphasizing hands-on manipulation, instant feedback, and low-pressure practice over rote memorization.",
+  unitsTitle: "Three Learning Units",
+  featuresTitle: "Core Features",
+  features: [
+    { title: "Interactive Games", desc: "Quick count, compare, match, number line, part-whole, and place value — with auto-generated questions." },
+    { title: "Bilingual Support", desc: "One-tap switch between English and Chinese for bilingual homes and classrooms." },
+    { title: "Faces & Rewards", desc: "Stars, badges, and a face buddy that grows to motivate ongoing learning." },
+    { title: "Parent Center", desc: "Track learning time, completion, and skill progress." },
+    { title: "Monthly Report", desc: "A monthly summary of growth with personalized practice tips." },
+    { title: "Number Sense Check", desc: "A multi-dimensional self-assessment of number-sense development." },
+  ],
+  classroomTitle: "Using Numi in a Classroom / Program",
+  classroomSteps: [
+    "Guide children through the three worlds in order, focusing on one skill at a time.",
+    "Use the Number Sense Check before and after a unit to observe growth.",
+    "Encourage parents to open the Parent Center for at-home practice.",
+  ],
+  roadmapTitle: "Future Improvements",
+  roadmap: [
+    "Finish the 'Easy Math' add/subtract game to complete the third unit.",
+    "Add real accounts and cloud progress sync.",
+    "Generate adaptive practice recommendations per child.",
+    "Add a teacher dashboard for class management and batch reports.",
+    "Add voice narration and accessibility support.",
+  ],
+  contactTitle: "Partnerships",
+  contactText: "If you are a school or education organization, reach out to us about pilot partnerships.",
+  },
+  // App Home
+  app: {
+  greeting: "Hello",
       defaultName: "Friend",
       todayActivity: "Learn Today",
       myPet: "My Companion",
@@ -300,9 +450,11 @@ export const translations = {
       parent: "Parent Mode",
       explore: "Explore Numbers",
       exploreSubtitle: "Start today's number learning",
-      screening: "Number Sense Check",
-      screeningSubtitle: "Fun questions across key number-sense skills",
-    },
+    screening: "Number Sense Check",
+    screeningSubtitle: "Fun questions across key number-sense skills",
+    comingSoon: "Coming Soon",
+    comingSoonDesc: "This activity is under development",
+  },
     // Activities
     activities: {
       title: "Choose Activity",
@@ -472,16 +624,24 @@ export const translations = {
       numberLineHint: "Tap where the number belongs",
       matchInstruction: "Look at the number in the middle. Tap the group of dots that has the same amount.",
       numberLineInstruction: "Look at the number on top. Tap where it should live on the line.",
+      partWholePrompt: "{n} can be {a} and how many more?",
+      partWholeHint: "Tap the missing number",
+      partWholeInstruction: "There are {n} in all. Some are already on the left. Think about how many more go on the right to make {n}.",
+      placeValuePrompt: "How many tens and ones are in {n}?",
+      placeValueHint: "Count the bundles of ten, then the single ones",
+      placeValueInstruction: "Break {n} apart: a bundle of sticks is a ten, a single dot is a one. Tap the right combination.",
     },
     // Settings
     settings: {
       title: "Settings",
-      language: "Language",
-      sound: "Sound",
-      music: "Music",
-      notifications: "Notifications",
-      parentMode: "Parent Mode",
-    },
+    language: "Language",
+    sound: "Sound",
+    music: "Music",
+    notifications: "Notifications",
+    parentMode: "Parent Mode",
+    howItWorks: "How It Works",
+    forEducators: "For Educators",
+  },
     // Parent Mode
     parent: {
       title: "Parent Mode",

@@ -22,10 +22,10 @@ const worldActivities: Record<
   ],
   representation: [
     { key: "numberLine", screen: "numberLine" },
-    { key: "placeValue", screen: "placeValue", locked: true },
+    { key: "placeValue", screen: "placeValue" },
   ],
   operation: [
-    { key: "partWhole", screen: "partWhole", locked: true },
+    { key: "partWhole", screen: "partWhole" },
     { key: "addSub", screen: "addSub", locked: true },
   ],
 }

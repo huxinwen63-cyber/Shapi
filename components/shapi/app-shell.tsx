@@ -1,8 +1,10 @@
 "use client"
 
 import { useState } from "react"
+import { useLanguage } from "@/lib/language-context"
 import { GhibliFrame } from "./ghibli-frame"
 import { WelcomeScreen } from "./welcome-screen"
+import { WalkthroughScreen } from "./walkthrough-screen"
 import { AppHome } from "./app-home"
 import { PetScreen } from "./pet-screen"
 import { ExploreScreen } from "./explore-screen"
@@ -12,14 +14,18 @@ import { SubitizingGame } from "./subitizing-game"
 import { ComparisonGame } from "./comparison-game"
 import { MatchingGame } from "./matching-game"
 import { NumberLineGame } from "./number-line-game"
+import { PartWholeGame } from "./part-whole-game"
+import { PlaceValueGame } from "./place-value-game"
 import { ProgressScreen } from "./progress-screen"
 import { ScreeningTest } from "./screening-test"
 import { SettingsScreen } from "./settings-screen"
 import { ParentLogin } from "./parent-login"
 import { ParentDashboard } from "./parent-dashboard"
+import { EducatorScreen } from "./educator-screen"
 
 type Screen =
   | "welcome"
+  | "walkthrough"
   | "home"
   | "pet"
   | "explore"
@@ -39,8 +45,10 @@ type Screen =
   | "settings"
   | "parentLogin"
   | "parentDashboard"
+  | "educator"
 
 export function AppShell() {
+  const { t } = useLanguage()
   const [currentScreen, setCurrentScreen] = useState<Screen>("welcome")
   const [parentEmail, setParentEmail] = useState<string | null>(null)
 
@@ -77,7 +85,10 @@ export function AppShell() {
   return (
     <GhibliFrame>
       {currentScreen === "welcome" && (
-        <WelcomeScreen onStart={() => setCurrentScreen("home")} />
+        <WelcomeScreen onStart={() => setCurrentScreen("walkthrough")} />
+      )}
+      {currentScreen === "walkthrough" && (
+        <WalkthroughScreen onDone={() => setCurrentScreen("home")} />
       )}
       {currentScreen === "home" && (
         <AppHome onNavigate={handleNavigate} />
@@ -112,18 +123,28 @@ export function AppShell() {
       {currentScreen === "numberLine" && (
         <NumberLineGame onBack={handleActivityBack} />
       )}
-      {(currentScreen === "partWhole" || currentScreen === "placeValue" || currentScreen === "addSub") && (
+      {currentScreen === "placeValue" && (
+        <PlaceValueGame onBack={handleActivityBack} />
+      )}
+      {currentScreen === "partWhole" && (
+        <PartWholeGame onBack={handleActivityBack} />
+      )}
+      {currentScreen === "addSub" && (
         <div className="flex flex-col h-full items-center justify-center p-8 text-center">
           <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mb-4">
             <span className="text-3xl">🚧</span>
           </div>
-          <p className="text-lg font-semibold text-foreground mb-2">Coming Soon</p>
-          <p className="text-muted-foreground mb-6">This activity is under development</p>
+          <p className="text-lg font-semibold text-foreground mb-2" suppressHydrationWarning>
+            {t.app.comingSoon}
+          </p>
+          <p className="text-muted-foreground mb-6" suppressHydrationWarning>
+            {t.app.comingSoonDesc}
+          </p>
           <button
             onClick={handleActivityBack}
             className="px-6 py-2 bg-primary text-primary-foreground rounded-full font-medium"
           >
-            Back
+            {t.game.back}
           </button>
         </div>
       )}
@@ -141,6 +162,8 @@ export function AppShell() {
             } else {
               setCurrentScreen("parentLogin")
             }
+          } else {
+            setCurrentScreen(screen as Screen)
           }
         }} />
       )}
@@ -162,6 +185,9 @@ export function AppShell() {
           }}
           email={parentEmail || ""} 
         />
+      )}
+      {currentScreen === "educator" && (
+        <EducatorScreen onBack={() => setCurrentScreen("settings")} />
       )}
     </GhibliFrame>
   )

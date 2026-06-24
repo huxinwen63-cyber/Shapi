@@ -1,7 +1,7 @@
 "use client"
 
 import { useLanguage } from "@/lib/language-context"
-import { ArrowLeft, Globe, Volume2, Music, Bell, Shield, ChevronRight } from "lucide-react"
+import { ArrowLeft, Globe, Volume2, Music, Bell, Shield, ChevronRight, HelpCircle, GraduationCap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 interface SettingsScreenProps {
@@ -22,7 +22,9 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
     { icon: Volume2, label: t.settings.sound, toggle: true, enabled: true },
     { icon: Music, label: t.settings.music, toggle: true, enabled: true },
     { icon: Bell, label: t.settings.notifications, toggle: true, enabled: false },
+    { icon: HelpCircle, label: t.settings.howItWorks, arrow: true, action: () => onNavigate?.("walkthrough") },
     { icon: Shield, label: t.settings.parentMode, arrow: true, action: () => onNavigate?.("parentLogin") },
+    { icon: GraduationCap, label: t.settings.forEducators, arrow: true, action: () => onNavigate?.("educator") },
   ]
 
   return (
