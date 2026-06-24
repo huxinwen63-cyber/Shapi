@@ -77,9 +77,9 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
         {/* App Info */}
         <div className="mt-8 text-center">
           <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
-            <span className="text-2xl font-bold text-primary">S</span>
+            <span className="text-2xl font-bold text-primary">N</span>
           </div>
-          <p className="font-semibold text-foreground">Shapi</p>
+          <p className="font-semibold text-foreground">Numi</p>
           <p className="text-sm text-muted-foreground">v1.0.0</p>
         </div>
       </div>

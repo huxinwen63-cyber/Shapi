@@ -4,8 +4,8 @@ export const translations = {
   zh: {
     // Welcome / opening screen
     welcome: {
-      appName: "Shapi",
-      tagline: "和小猫一起，爱上数字",
+      appName: "Numi",
+      tagline: "爱上数字，从这里开始",
       subtitle: "为 5-7 岁孩子打造的数感启蒙乐园",
       start: "开始探索",
     },
@@ -19,7 +19,7 @@ export const translations = {
       settings: "设置",
       parent: "家长入口",
       explore: "探索数字",
-      exploreSubtitle: "和小猫一起开始今天的学习",
+      exploreSubtitle: "开始今天的数字学习",
       screening: "数感小测验",
       screeningSubtitle: "趣味题目，从多角度了解数感",
     },
@@ -65,7 +65,7 @@ export const translations = {
     // Worlds (groups of activities)
     worlds: {
       title: "三个世界",
-      subtitle: "和小猫一起探索数字",
+      subtitle: "一起探索数字",
       objectiveLabel: "学习目标",
       skillsLabel: "涵盖技能",
       perception: {
@@ -213,7 +213,7 @@ export const translations = {
       or: "或",
       continueAsGuest: "跳过登录",
       logout: "退出登录",
-      dashboard: "家长中心",
+      dashboard: "���长中心",
       childName: "孩子姓名",
       monthlyReport: "月度报告",
       reportDescription: "每月初发送上月学习报告到您的邮箱",
@@ -236,7 +236,7 @@ export const translations = {
     // Screening test
     screening: {
       title: "数感小测验",
-      introTitle: "和小猫做个小游戏吧",
+      introTitle: "来做个小游戏吧",
       introText: "这是一组有趣的题目，从多个角度了解孩子的数感发展，并会留意答题的速度。没有对错，放轻松哦！",
       introNote: "本测验基于数感研究设计，仅供参考，不能替代专业诊断。",
       start: "开始测验",
@@ -247,7 +247,7 @@ export const translations = {
       resultTitle: "测验完成啦",
       scoreLabel: "答对",
       ofTotal: "共15题",
-      overallStrong: "孩子的数感发展得很好！继续和小猫一起玩吧。",
+      overallStrong: "孩子的数感发展得很好！继续保持吧。",
       overallMedium: "孩子的数感正在稳步成长，多做练习会更棒。",
       overallWatch: "孩子在部分数感能力上需要更多支持，建议多玩相关游戏；如果持续有困难，可咨询专业老师。",
       dimensionTitle: "各项能力",
@@ -279,8 +279,8 @@ export const translations = {
   en: {
     // Welcome / opening screen
     welcome: {
-      appName: "Shapi",
-      tagline: "Fall in love with numbers, with Kitty",
+      appName: "Numi",
+      tagline: "Fall in love with numbers",
       subtitle: "A playful number-sense world for ages 5-7",
       start: "Start Exploring",
     },
@@ -294,7 +294,7 @@ export const translations = {
       settings: "Settings",
       parent: "Parent Mode",
       explore: "Explore Numbers",
-      exploreSubtitle: "Start today's learning with Kitty",
+      exploreSubtitle: "Start today's number learning",
       screening: "Number Sense Check",
       screeningSubtitle: "Fun questions across key number-sense skills",
     },
@@ -340,7 +340,7 @@ export const translations = {
     // Worlds (groups of activities)
     worlds: {
       title: "Three Worlds",
-      subtitle: "Explore numbers with Kitty",
+      subtitle: "Explore numbers together",
       objectiveLabel: "Learning Objective",
       skillsLabel: "Skills Covered",
       perception: {
@@ -511,7 +511,7 @@ export const translations = {
     // Screening test
     screening: {
       title: "Number Sense Check",
-      introTitle: "Play a little game with Kitty",
+      introTitle: "Let's play a little game",
       introText: "These are fun questions that look at your child's number sense from several angles, and gently notice response speed. No right or wrong, just relax!",
       introNote: "This check is designed from number-sense research, for reference only, and does not replace a professional diagnosis.",
       start: "Start Check",
@@ -522,7 +522,7 @@ export const translations = {
       resultTitle: "All Done!",
       scoreLabel: "Correct",
       ofTotal: "of 15",
-      overallStrong: "Your child's number sense is developing well! Keep playing with Kitty.",
+      overallStrong: "Your child's number sense is developing well! Keep it up.",
       overallMedium: "Your child's number sense is growing steadily. More practice will help.",
       overallWatch: "Your child needs more support in some number-sense skills. Play related games often; if difficulties persist, consult a specialist.",
       dimensionTitle: "Skill Breakdown",

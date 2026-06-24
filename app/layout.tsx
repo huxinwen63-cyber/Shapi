@@ -16,8 +16,8 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Shapi - 让数学学习从形状开始',
-  description: '专为5-7岁儿童设计的几何优先数学启蒙App，通过视觉化学习建立数感基础',
+  title: 'Numi - 让孩子爱上数字',
+  description: '专为5-7岁儿童设计的数感启蒙App，通过游戏化学习建立数感基础',
   generator: 'v0.app',
 }
 
