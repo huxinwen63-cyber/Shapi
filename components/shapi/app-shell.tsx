@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { GhibliFrame } from "./ghibli-frame"
 import { WelcomeScreen } from "./welcome-screen"
 import { AppHome } from "./app-home"
 import { PetScreen } from "./pet-screen"
@@ -74,7 +75,7 @@ export function AppShell() {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto h-[100dvh] bg-background overflow-hidden shadow-2xl">
+    <GhibliFrame>
       {currentScreen === "welcome" && (
         <WelcomeScreen onStart={() => setCurrentScreen("home")} />
       )}
@@ -162,6 +163,6 @@ export function AppShell() {
           email={parentEmail || ""} 
         />
       )}
-    </div>
+    </GhibliFrame>
   )
 }

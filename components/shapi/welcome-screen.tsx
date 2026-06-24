@@ -9,18 +9,10 @@ interface WelcomeScreenProps {
 }
 
 export function WelcomeScreen({ onStart }: WelcomeScreenProps) {
-  const { t, locale, toggleLocale } = useLanguage()
+  const { t } = useLanguage()
 
   return (
     <div className="relative flex flex-col h-full items-center justify-center p-8 text-center overflow-hidden">
-      {/* Language toggle */}
-      <button
-        onClick={toggleLocale}
-        className="absolute top-5 right-5 rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground hover:bg-muted/50 transition-colors"
-      >
-        {locale === "zh" ? "EN" : "中文"}
-      </button>
-
       {/*
         Animation placeholder.
         Replace the empty <div> below with your animation (e.g. a Lottie player,
