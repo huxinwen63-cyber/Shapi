@@ -2,7 +2,6 @@
 
 import { useLanguage } from "@/lib/language-context"
 import { Button } from "@/components/ui/button"
-import { AnimatedCat } from "./animated-cat"
 import { Sparkles } from "lucide-react"
 
 interface WelcomeScreenProps {
@@ -22,9 +21,14 @@ export function WelcomeScreen({ onStart }: WelcomeScreenProps) {
         {locale === "zh" ? "EN" : "中文"}
       </button>
 
-      {/* Mascot */}
-      <div className="mb-8">
-        <AnimatedCat mood="happy" size="lg" />
+      {/*
+        Animation placeholder.
+        Replace the empty <div> below with your animation (e.g. a Lottie player,
+        a <video>, an animated SVG, or any component). The box is 12rem (h-48)
+        tall and centered — adjust the sizing classes as needed.
+      */}
+      <div className="mb-8 flex h-48 w-48 items-center justify-center" aria-hidden="true">
+        {/* Your animation goes here */}
       </div>
 
       {/* Brand */}
