@@ -17,7 +17,7 @@ const nunitoSans = Nunito_Sans({
 
 export const metadata: Metadata = {
   title: 'Numi - 让孩子爱上数字',
-  description: '专为5-7岁儿童设计的数感启蒙App，通过游戏化学习建立数感基础',
+  description: '专为孩子设计的数感启蒙App，通过游戏化学习建立数感基础',
   generator: 'v0.app',
 }
 

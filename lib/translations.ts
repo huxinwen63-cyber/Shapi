@@ -6,7 +6,7 @@ export const translations = {
     welcome: {
       appName: "Numi",
       tagline: "爱上数字，从这里开始",
-      subtitle: "为 5-7 岁孩子打造的数感启蒙乐园",
+      subtitle: "为孩子打造的数感启蒙乐园",
       start: "开始探索",
     },
     // App Home
@@ -286,7 +286,7 @@ export const translations = {
     welcome: {
       appName: "Numi",
       tagline: "Fall in love with numbers",
-      subtitle: "A playful number-sense world for ages 5-7",
+      subtitle: "A playful number-sense world for kids",
       start: "Start Exploring",
     },
     // App Home
