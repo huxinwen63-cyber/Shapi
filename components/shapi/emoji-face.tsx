@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 export type FaceMood = "smile" | "happy" | "wow" | "cool"
 
 interface EmojiFaceProps {
-  /** The face's own color (CSS color). Changes as worlds are completed. */
+  /** The face's line color (CSS color). Changes as worlds are completed. */
   color: string
   mood?: FaceMood
   size?: number
@@ -14,18 +14,21 @@ interface EmojiFaceProps {
 }
 
 /**
- * A friendly SVG animated smiley face. The whole face is tinted with the
- * `color` prop (unlocked by completing worlds). It gently bobs, the eyes blink,
- * and a glossy highlight gives it a soft, playful look. Each mood swaps the
- * eyes/mouth for a different expression.
- *
- * Built to be easy to replace later with a different animated example.
+ * A minimal line-art smiley face. Everything is drawn with strokes only —
+ * no fills, no gloss. The whole face is tinted with the `color` prop
+ * (unlocked by completing worlds). It gently bobs and the eyes blink.
+ * Each mood swaps the eyes/mouth lines for a different expression.
  */
 export function EmojiFace({ color, mood = "smile", size = 64, locked = false, className }: EmojiFaceProps) {
-  const faceColor = locked ? "var(--muted)" : color
-  const ink = locked ? "var(--muted-foreground)" : "rgba(45, 32, 20, 0.88)"
-  const blush = "rgba(255, 120, 120, 0.4)"
-  const gradId = `face-grad-${mood}-${locked ? "lock" : "on"}`
+  const ink = locked ? "var(--muted-foreground)" : color
+  const stroke = {
+    fill: "none",
+    stroke: ink,
+    strokeWidth: 5,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    style: { transition: "stroke 0.5s ease" },
+  }
 
   return (
     <div
@@ -34,66 +37,40 @@ export function EmojiFace({ color, mood = "smile", size = 64, locked = false, cl
       aria-hidden="true"
     >
       <svg viewBox="0 0 100 100" width={size} height={size} style={{ display: "block" }}>
-        <defs>
-          <radialGradient id={gradId} cx="38%" cy="32%" r="75%">
-            <stop offset="0%" stopColor="rgba(255,255,255,0.55)" />
-            <stop offset="38%" stopColor="rgba(255,255,255,0)" />
-          </radialGradient>
-        </defs>
-
-        {/* Face circle */}
-        <circle cx="50" cy="50" r="46" fill={faceColor} style={{ transition: "fill 0.5s ease" }} />
-        {/* Soft inner shading at the bottom for roundness */}
-        {!locked && <circle cx="50" cy="58" r="46" fill="rgba(0,0,0,0.06)" />}
-        {/* Glossy highlight */}
-        {!locked && <circle cx="50" cy="50" r="46" fill={`url(#${gradId})`} />}
-
-        {/* Cheeks */}
-        {!locked && mood !== "cool" && (
-          <>
-            <ellipse cx="26" cy="60" rx="8" ry="5.5" fill={blush} />
-            <ellipse cx="74" cy="60" rx="8" ry="5.5" fill={blush} />
-          </>
-        )}
+        {/* Face outline */}
+        <circle cx="50" cy="50" r="44" {...stroke} />
 
         {/* Eyes */}
         {mood === "cool" ? (
-          // Sunglasses
-          <g fill={ink}>
-            <rect x="18" y="38" width="27" height="15" rx="7" />
-            <rect x="55" y="38" width="27" height="15" rx="7" />
-            <rect x="44" y="43" width="12" height="4" />
+          // Sunglasses drawn as lines
+          <g {...stroke}>
+            <path d="M22 42 h22 v8 a6 6 0 0 1 -22 1 Z" />
+            <path d="M56 42 h22 v9 a6 6 0 0 1 -22 -1 Z" />
+            <path d="M44 44 h12" />
           </g>
         ) : mood === "wow" ? (
-          <g fill={ink}>
-            <ellipse cx="36" cy="44" rx="6.5" ry="8.5" />
-            <ellipse cx="64" cy="44" rx="6.5" ry="8.5" />
+          <g {...stroke}>
+            <circle cx="37" cy="43" r="5" />
+            <circle cx="63" cy="43" r="5" />
           </g>
         ) : (
-          <g fill={ink} className={!locked ? "animate-blink" : undefined} style={{ transformBox: "fill-box", transformOrigin: "center" }}>
-            <circle cx="36" cy="44" r="6" />
-            <circle cx="64" cy="44" r="6" />
+          <g
+            {...stroke}
+            className={!locked ? "animate-blink" : undefined}
+            style={{ ...stroke.style, transformBox: "fill-box", transformOrigin: "center" }}
+          >
+            <path d="M37 43 v0.5" />
+            <path d="M63 43 v0.5" />
           </g>
         )}
 
         {/* Mouth */}
         {mood === "wow" ? (
-          <ellipse cx="50" cy="68" rx="10" ry="12" fill={ink} />
+          <circle cx="50" cy="68" r="9" {...stroke} />
         ) : mood === "happy" ? (
-          // Big open grin with a little tongue
-          <g>
-            <path d="M30 60 Q50 86 70 60 Z" fill={ink} />
-            <path d="M41 71 Q50 80 59 71 Z" fill="rgba(255,120,120,0.75)" />
-          </g>
+          <path d="M30 60 Q50 84 70 60" {...stroke} />
         ) : (
-          // Gentle curved smile
-          <path
-            d="M33 63 Q50 78 67 63"
-            fill="none"
-            stroke={ink}
-            strokeWidth="5"
-            strokeLinecap="round"
-          />
+          <path d="M33 64 Q50 78 67 64" {...stroke} />
         )}
       </svg>
     </div>
