@@ -1,9 +1,10 @@
 "use client"
 
-import Image from "next/image"
+import { useState } from "react"
 import { useLanguage } from "@/lib/language-context"
 import { ArrowLeft, Star, Flame, Trophy, Sparkles, Award, Lock } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { EmojiFace, type FaceMood } from "./emoji-face"
 
 interface ProgressScreenProps {
   onBack: () => void
@@ -11,6 +12,16 @@ interface ProgressScreenProps {
 
 export function ProgressScreen({ onBack }: ProgressScreenProps) {
   const { t } = useLanguage()
+
+  // Demo: how many worlds have been completed (0-3). Each completed world
+  // gives the face a new color and unlocks one more expression.
+  const [worldsDone, setWorldsDone] = useState(1)
+
+  // Face colors unlocked progressively. Index 0 is always available.
+  const faceColors = ["#86c166", "#f2c94c", "#6cb6e3", "#e58fb0"]
+  const faceMoods: FaceMood[] = ["smile", "happy", "wow", "cool"]
+  // The face's current color follows the latest completed world.
+  const currentColor = faceColors[Math.min(worldsDone, faceColors.length - 1)]
 
   const stats = [
     { icon: Sparkles, value: "12", label: t.progress.activitiesCompleted, color: "bg-primary/10 text-primary" },
@@ -26,11 +37,9 @@ export function ProgressScreen({ onBack }: ProgressScreenProps) {
     { name: t.activities.numberLine.title, progress: 20, stars: 0 },
   ]
 
-  // Reward system: points, earned badges, unlocked avatars
+  // Reward system: points, earned badges
   const totalPoints = 47
   const earnedBadges = [true, true, true, false, false, false]
-  const avatarImages = ["/avatars/kitty.png", "/avatars/bunny.png", "/avatars/fox.png", "/avatars/panda.png"]
-  const unlockedAvatars = [true, true, false, false]
 
   return (
     <div className="flex flex-col h-full bg-background">
@@ -167,40 +176,63 @@ export function ProgressScreen({ onBack }: ProgressScreenProps) {
           </div>
         </div>
 
-        {/* Avatars */}
+        {/* Faces (emoji avatars) */}
         <div className="mt-8 mb-4">
-          <h2 className="text-lg font-semibold mb-4" suppressHydrationWarning>
-            {t.progress.avatarsTitle}
-          </h2>
+          <div className="flex items-center justify-between mb-2">
+            <h2 className="text-lg font-semibold" suppressHydrationWarning>
+              {t.progress.avatarsTitle}
+            </h2>
+            <span className="text-xs font-medium text-muted-foreground" suppressHydrationWarning>
+              {t.progress.worldsDone}: {worldsDone}/3
+            </span>
+          </div>
+          <p className="text-xs text-muted-foreground mb-4 leading-relaxed" suppressHydrationWarning>
+            {t.progress.facesHint}
+          </p>
+
+          {/* Featured current face */}
+          <div className="bg-card border border-border rounded-2xl p-5 flex flex-col items-center mb-4">
+            <EmojiFace color={currentColor} mood={faceMoods[Math.min(worldsDone, faceMoods.length - 1)]} size={88} />
+          </div>
+
+          {/* Collection: one face unlocked per completed world (first always unlocked) */}
           <div className="grid grid-cols-4 gap-3">
-            {t.progress.avatars.map((avatar, index) => {
-              const unlocked = unlockedAvatars[index]
+            {t.progress.faces.map((face, index) => {
+              const unlocked = index <= worldsDone
               return (
                 <div key={index} className="flex flex-col items-center gap-1.5">
                   <div
-                    className={`relative w-16 h-16 rounded-2xl overflow-hidden border-2 ${
-                      unlocked ? "border-primary" : "border-border"
+                    className={`relative w-16 h-16 rounded-2xl flex items-center justify-center border-2 ${
+                      unlocked ? "border-primary bg-card" : "border-border bg-muted/40"
                     }`}
                   >
-                    <Image
-                      src={avatarImages[index] || "/placeholder.svg"}
-                      alt={avatar.name}
-                      fill
-                      className={`object-cover ${unlocked ? "" : "grayscale opacity-40"}`}
-                      sizes="64px"
-                    />
+                    <EmojiFace color={faceColors[index]} mood={faceMoods[index]} size={44} locked={!unlocked} />
                     {!unlocked && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-background/40">
-                        <Lock className="w-5 h-5 text-muted-foreground" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Lock className="w-4 h-4 text-muted-foreground" />
                       </div>
                     )}
                   </div>
                   <span className="text-xs font-medium" suppressHydrationWarning>
-                    {avatar.name}
+                    {unlocked ? face.name : t.progress.locked}
                   </span>
                 </div>
               )
             })}
+          </div>
+
+          {/* Demo controls */}
+          <div className="flex gap-2 mt-4">
+            <Button
+              onClick={() => setWorldsDone((w) => Math.min(w + 1, 3))}
+              disabled={worldsDone >= 3}
+              className="flex-1 rounded-full"
+            >
+              <span suppressHydrationWarning>{t.progress.demoComplete}</span>
+            </Button>
+            <Button variant="outline" onClick={() => setWorldsDone(0)} className="rounded-full">
+              <span suppressHydrationWarning>{t.progress.demoReset}</span>
+            </Button>
           </div>
         </div>
       </div>
