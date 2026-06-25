@@ -1,7 +1,7 @@
 "use client"
 
 import { useLanguage } from "@/lib/language-context"
-import { Star, ChevronRight, Settings, Compass, ClipboardCheck } from "lucide-react"
+import { Star, ChevronRight, Settings, Compass, ClipboardCheck, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { AnimatedCat } from "./animated-cat"
 
@@ -106,6 +106,27 @@ export function AppHome({ onNavigate }: AppHomeProps) {
             </p>
             <p className="text-sm text-muted-foreground text-pretty" suppressHydrationWarning>
               {t.app.screeningSubtitle}
+            </p>
+          </div>
+        </div>
+        <ChevronRight className="w-5 h-5 text-muted-foreground shrink-0" />
+      </button>
+
+      {/* Join the Beta */}
+      <button
+        onClick={() => onNavigate("beta")}
+        className="w-full bg-secondary/30 border border-secondary rounded-2xl p-4 mt-2 flex items-center justify-between hover:bg-secondary/40 transition-colors shrink-0"
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-secondary/50 rounded-xl flex items-center justify-center">
+            <Sparkles className="w-5 h-5 text-secondary-foreground" />
+          </div>
+          <div className="text-left">
+            <p className="font-medium text-foreground" suppressHydrationWarning>
+              {t.app.betaCta}
+            </p>
+            <p className="text-sm text-muted-foreground text-pretty" suppressHydrationWarning>
+              {t.app.betaCtaSubtitle}
             </p>
           </div>
         </div>

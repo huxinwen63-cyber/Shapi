@@ -22,6 +22,7 @@ import { SettingsScreen } from "./settings-screen"
 import { ParentLogin } from "./parent-login"
 import { ParentDashboard } from "./parent-dashboard"
 import { EducatorScreen } from "./educator-screen"
+import { BetaSignup } from "./beta-signup"
 
 type Screen =
   | "welcome"
@@ -46,6 +47,7 @@ type Screen =
   | "parentLogin"
   | "parentDashboard"
   | "educator"
+  | "beta"
 
 export function AppShell() {
   const { t } = useLanguage()
@@ -187,7 +189,10 @@ export function AppShell() {
         />
       )}
       {currentScreen === "educator" && (
-        <EducatorScreen onBack={() => setCurrentScreen("settings")} />
+        <EducatorScreen onBack={() => setCurrentScreen("settings")} onNavigate={handleNavigate} />
+      )}
+      {currentScreen === "beta" && (
+        <BetaSignup onBack={() => setCurrentScreen("home")} />
       )}
     </GhibliFrame>
   )

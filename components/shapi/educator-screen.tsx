@@ -6,11 +6,12 @@ import { Button } from "@/components/ui/button"
 
 interface EducatorScreenProps {
   onBack: () => void
+  onNavigate?: (screen: string) => void
 }
 
 const worldIds = ["perception", "representation", "operation"] as const
 
-export function EducatorScreen({ onBack }: EducatorScreenProps) {
+export function EducatorScreen({ onBack, onNavigate }: EducatorScreenProps) {
   const { t } = useLanguage()
   const e = t.educator
 
@@ -143,9 +144,14 @@ export function EducatorScreen({ onBack }: EducatorScreenProps) {
             <Mail className="w-5 h-5" />
             <h2 className="font-semibold" suppressHydrationWarning>{e.contactTitle}</h2>
           </div>
-          <p className="text-sm text-muted-foreground leading-relaxed text-pretty" suppressHydrationWarning>
+          <p className="text-sm text-muted-foreground leading-relaxed text-pretty mb-4" suppressHydrationWarning>
             {e.contactText}
           </p>
+          {onNavigate && (
+            <Button onClick={() => onNavigate("beta")} className="w-full rounded-full h-11">
+              <span suppressHydrationWarning>{t.app.betaCta}</span>
+            </Button>
+          )}
         </section>
       </div>
     </div>

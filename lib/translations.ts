@@ -2,6 +2,34 @@ export type Locale = "zh" | "en"
 
 export const translations = {
   zh: {
+    // Beta signup / RSVP form
+  beta: {
+  title: "Beta 测试招募",
+  subtitle: "和我们一起，帮孩子爱上数字",
+  intro: "Numi 正在招募 beta 测试家庭。报名后我们会邀请你免费试用，并请你分享使用感受，帮助我们把产品做得更好。",
+  parentName: "家长姓名",
+  parentNamePlaceholder: "请输入你的称呼",
+  email: "电子邮箱",
+  emailPlaceholder: "name@example.com",
+  childAge: "孩子年龄",
+  childAgePlaceholder: "例如：5 岁",
+  role: "你的身份",
+  roles: ["家长", "老师", "学习专家", "机构 / 学校", "其他"],
+  device: "常用设备",
+  devices: ["手机", "平板", "电脑", "都可以"],
+  referral: "你从哪里听说我们的？（选填）",
+  referralPlaceholder: "朋友推荐、学校、社交媒体……",
+  consent: "我愿意参与 beta 测试，并同意接收相关邮件。",
+  submit: "提交报名",
+  submitting: "提交中…",
+  successTitle: "报名成功！",
+  successText: "谢谢你的参与！我们会尽快通过邮件联系你，发送试用邀请和参与指南。",
+  done: "完成",
+  errorName: "请填写姓名",
+  errorEmail: "请输入有效的邮箱地址",
+  errorConsent: "请勾选同意参与",
+  required: "必填",
+  },
     // Welcome / opening screen
   welcome: {
   appName: "Numi",
@@ -94,6 +122,8 @@ export const translations = {
     screeningSubtitle: "趣味题目，从多角度了解数感",
     comingSoon: "即将推出",
     comingSoonDesc: "这个活动正在开发中",
+    betaCta: "加入 Beta 测试",
+    betaCtaSubtitle: "报名免费试用，帮我们一起改进",
   },
     // Activities
     activities: {
@@ -362,7 +392,35 @@ export const translations = {
     langToggle: "English",
   },
   en: {
-    // Welcome / opening screen
+  // Beta signup / RSVP form
+  beta: {
+  title: "Beta Tester Sign-Up",
+  subtitle: "Help your child fall in love with numbers",
+  intro: "Numi is recruiting beta testing families. Sign up and we'll invite you to try it for free and share your feedback to help us make it better.",
+  parentName: "Your Name",
+  parentNamePlaceholder: "How should we call you?",
+  email: "Email",
+  emailPlaceholder: "name@example.com",
+  childAge: "Child's Age",
+  childAgePlaceholder: "e.g. 5 years old",
+  role: "I am a",
+  roles: ["Parent", "Teacher", "Learning Specialist", "School / Organization", "Other"],
+  device: "Main Device",
+  devices: ["Phone", "Tablet", "Computer", "Any of these"],
+  referral: "How did you hear about us? (optional)",
+  referralPlaceholder: "A friend, school, social media...",
+  consent: "I'd like to join the beta test and agree to receive related emails.",
+  submit: "Submit Sign-Up",
+  submitting: "Submitting...",
+  successTitle: "You're In!",
+  successText: "Thank you for joining! We'll email you soon with your invite and a participation guide.",
+  done: "Done",
+  errorName: "Please enter your name",
+  errorEmail: "Please enter a valid email address",
+  errorConsent: "Please check the consent box to continue",
+  required: "Required",
+  },
+  // Welcome / opening screen
   welcome: {
   appName: "Numi",
   tagline: "Fall in love with numbers",
@@ -454,6 +512,8 @@ export const translations = {
     screeningSubtitle: "Fun questions across key number-sense skills",
     comingSoon: "Coming Soon",
     comingSoonDesc: "This activity is under development",
+    betaCta: "Join the Beta",
+    betaCtaSubtitle: "Sign up for free access and help us improve",
   },
     // Activities
     activities: {
