@@ -20,7 +20,7 @@ export function AppHome({ onNavigate }: AppHomeProps) {
           <p className="text-muted-foreground text-sm" suppressHydrationWarning>
             {t.app.greeting}
           </p>
-          <h1 className="text-2xl font-bold text-foreground" suppressHydrationWarning>
+          <h1 className="font-display text-3xl font-semibold text-foreground" suppressHydrationWarning>
             {t.app.defaultName}
           </h1>
         </div>

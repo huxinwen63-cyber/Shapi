@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Nunito, Nunito_Sans } from 'next/font/google'
+import { Nunito, Nunito_Sans, Fraunces } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -12,6 +12,12 @@ const nunito = Nunito({
 const nunitoSans = Nunito_Sans({ 
   subsets: ["latin"],
   variable: '--font-body',
+  display: 'swap',
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: '--font-display',
   display: 'swap',
 });
 
@@ -28,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" className="bg-background">
-      <body className={`${nunito.variable} ${nunitoSans.variable} font-sans antialiased`}>
+      <body className={`${nunito.variable} ${nunitoSans.variable} ${fraunces.variable} font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
