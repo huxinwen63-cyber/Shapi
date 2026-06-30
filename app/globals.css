@@ -415,3 +415,143 @@
   animation: zzz 2s ease-in-out infinite;
   animation-delay: 1s;
 }
+
+/* ===== Fancy motion & interaction layer ===== */
+
+/* Floating fireflies / dust motes rising through the sky */
+@keyframes rise {
+  0% {
+    transform: translateY(20vh) translateX(0) scale(0.6);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--mote-opacity, 0.7);
+  }
+  50% {
+    transform: translateY(-40vh) translateX(16px) scale(1);
+  }
+  90% {
+    opacity: var(--mote-opacity, 0.7);
+  }
+  100% {
+    transform: translateY(-100vh) translateX(-12px) scale(0.7);
+    opacity: 0;
+  }
+}
+
+.animate-rise {
+  animation: rise var(--mote-dur, 16s) linear infinite;
+  animation-delay: var(--mote-delay, 0s);
+}
+
+/* Mouse-parallax smoothing for sky layers and the window */
+.parallax-layer {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Soft entrance for screens / cards */
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-pop-in {
+  animation: pop-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Celebration burst pieces shooting outward */
+@keyframes burst {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.2) rotate(0deg);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--bx, 0), var(--by, 0)) scale(1) rotate(var(--br, 180deg));
+  }
+}
+
+.animate-burst {
+  animation: burst 0.9s ease-out forwards;
+}
+
+/* Joyful pop+spin for the success emoji */
+@keyframes pop-spin {
+  0% {
+    transform: scale(0) rotate(-30deg);
+  }
+  60% {
+    transform: scale(1.25) rotate(8deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.animate-pop-spin {
+  animation: pop-spin 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Glossy shimmer that sweeps across primary buttons */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.45), transparent);
+  transform: translateX(-150%) skewX(-20deg);
+}
+
+.shimmer-btn:hover::after {
+  animation: shimmer 0.9s ease-out;
+}
+
+/* Tap feedback — gentle press for any interactive element using this class */
+.tap-pop {
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease;
+}
+.tap-pop:hover {
+  transform: translateY(-2px);
+}
+.tap-pop:active {
+  transform: translateY(0) scale(0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-burst,
+  .animate-pop-spin,
+  .animate-pop-in,
+  .shimmer-btn::after {
+    animation: none !important;
+  }
+  .parallax-layer {
+    transform: none !important;
+  }
+}

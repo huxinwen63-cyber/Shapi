@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import { useLanguage } from "@/lib/language-context"
 import { ArrowLeft, Star, HelpCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { CelebrationBurst } from "./celebration-burst"
 
 interface PlaceValueGameProps {
   onBack: () => void
@@ -190,8 +191,9 @@ export function PlaceValueGame({ onBack }: PlaceValueGameProps) {
             {t.game.placeValueHint}
           </p>
         ) : (
-          <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-300">
-            <div className="text-4xl mb-1">{isCorrect ? "✨" : "💭"}</div>
+          <div className="relative text-center animate-in fade-in slide-in-from-bottom-4 duration-300">
+            <CelebrationBurst show={isCorrect} />
+            <div className={`text-4xl mb-1 ${isCorrect ? "animate-pop-spin" : ""}`}>{isCorrect ? "✨" : "💭"}</div>
             <p className="text-lg font-bold" suppressHydrationWarning>
               {isCorrect ? t.game.great : t.game.keepGoing}
             </p>
