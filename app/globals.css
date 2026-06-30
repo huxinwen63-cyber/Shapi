@@ -151,33 +151,7 @@
   }
 }
 
-/* Click ripple — spawned at pointer position by ClickRipple */
-.click-ripple {
-  position: fixed;
-  z-index: 9999;
-  pointer-events: none;
-  border-radius: 9999px;
-  transform: translate(-50%, -50%) scale(0);
-  background: radial-gradient(circle, oklch(1 0 0 / 0.55) 0%, oklch(0.62 0.12 150 / 0.35) 45%, transparent 70%);
-  animation: ripple 0.6s ease-out forwards;
-}
-
-@keyframes ripple {
-  0% {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .click-ripple {
-    animation: none !important;
-    display: none !important;
-  }
   button:not(:disabled):active,
   [role="button"]:not([aria-disabled="true"]):active {
     transform: none !important;

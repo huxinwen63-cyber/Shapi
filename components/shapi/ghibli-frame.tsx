@@ -3,7 +3,6 @@
 import { type ReactNode, useRef, useState, useCallback } from "react"
 import { useLanguage } from "@/lib/language-context"
 import { Languages } from "lucide-react"
-import { ClickRipple } from "./click-ripple"
 
 interface GhibliFrameProps {
   children: ReactNode
@@ -69,9 +68,6 @@ export function GhibliFrame({ children }: GhibliFrameProps) {
       onMouseLeave={resetPointer}
       style={{ perspective: "1200px" }}
     >
-      {/* App-wide dynamic click ripple */}
-      <ClickRipple />
-
       {/* Decorative sky layers */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
         {/* Sun glow */}
