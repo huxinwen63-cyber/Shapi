@@ -3,7 +3,7 @@
 import { useLanguage } from "@/lib/language-context"
 import { Star, ChevronRight, Settings, Compass, ClipboardCheck, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { AnimatedCat } from "./animated-cat"
+import { EmojiFace } from "./emoji-face"
 
 interface AppHomeProps {
   onNavigate: (screen: string) => void
@@ -40,7 +40,7 @@ export function AppHome({ onNavigate }: AppHomeProps) {
         className="bg-amber-50 rounded-3xl p-4 mb-6 flex items-center gap-4 transition-transform active:scale-98 hover:scale-[1.02]"
       >
         <div className="w-20 h-20 bg-background/50 rounded-2xl flex items-center justify-center overflow-hidden">
-          <AnimatedCat mood="idle" size="sm" />
+          <EmojiFace mood="smile" color="var(--primary)" size={56} />
         </div>
         <div className="flex-1 text-left">
           <h2 className="font-semibold text-foreground" suppressHydrationWarning>

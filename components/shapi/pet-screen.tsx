@@ -4,7 +4,8 @@ import { useState } from "react"
 import { useLanguage } from "@/lib/language-context"
 import { ArrowLeft, Heart, Sparkles, Shirt } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { AnimatedCat, CatMood } from "./animated-cat"
+import type { CatMood } from "./animated-cat"
+import { EmojiFace } from "./emoji-face"
 
 interface PetScreenProps {
   onBack: () => void
@@ -58,9 +59,13 @@ export function PetScreen({ onBack }: PetScreenProps) {
         <div className="absolute top-20 right-12 w-3 h-3 rounded-full bg-amber-300/40 animate-float-delayed" />
         <div className="absolute bottom-20 left-16 w-5 h-5 rounded-full bg-amber-200/30 animate-float" />
         
-        {/* Animated Cat */}
+        {/* Companion face */}
         <div className="bg-background/50 rounded-3xl p-6 mb-6 shadow-lg">
-          <AnimatedCat mood={catMood} size="lg" />
+          <EmojiFace
+            mood={catMood === "happy" ? "happy" : catMood === "sleepy" ? "sleepy" : "smile"}
+            color="var(--primary)"
+            size={180}
+          />
         </div>
         
         <h2 className="text-2xl font-bold text-foreground mb-2" suppressHydrationWarning>

@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils"
 
-export type FaceMood = "smile" | "happy" | "wow" | "cool"
+export type FaceMood = "smile" | "happy" | "wow" | "cool" | "sleepy"
 
 interface EmojiFaceProps {
   /** The face's line color (CSS color). Changes as worlds are completed. */
@@ -55,6 +55,12 @@ export function EmojiFace({ color, mood = "smile", size = 64, locked = false, cl
           <g {...stroke}>
             <path d="M37 38 v12 M31 44 h12" />
             <path d="M63 38 v12 M57 44 h12" />
+          </g>
+        ) : mood === "sleepy" ? (
+          // Closed, downward sleepy eyes
+          <g {...stroke}>
+            <path d="M30 46 Q37 52 44 46" />
+            <path d="M56 46 Q63 52 70 46" />
           </g>
         ) : (
           // Simple line/dot eyes that blink
