@@ -232,8 +232,8 @@ export const translations = {
       locked: "待解锁",
       items: [
         {
-          name: "小猫咪",
-          description: "喜欢午后阳光的可爱伙伴",
+          name: "",
+          description: "",
         },
       ],
     },
@@ -622,8 +622,8 @@ export const translations = {
       locked: "Locked",
       items: [
         {
-          name: "Kitty",
-          description: "A lovely companion who loves afternoon sunshine",
+          name: "",
+          description: "",
         },
       ],
     },
