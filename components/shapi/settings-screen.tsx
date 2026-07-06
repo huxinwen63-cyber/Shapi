@@ -1,7 +1,7 @@
 "use client"
 
 import { useLanguage } from "@/lib/language-context"
-import { ArrowLeft, Globe, Volume2, Music, Bell, Shield, ChevronRight } from "lucide-react"
+import { ArrowLeft, Globe, Volume2, Music, Bell, Shield, ChevronRight, HelpCircle, GraduationCap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 interface SettingsScreenProps {
@@ -22,7 +22,9 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
     { icon: Volume2, label: t.settings.sound, toggle: true, enabled: true },
     { icon: Music, label: t.settings.music, toggle: true, enabled: true },
     { icon: Bell, label: t.settings.notifications, toggle: true, enabled: false },
+    { icon: HelpCircle, label: t.settings.howItWorks, arrow: true, action: () => onNavigate?.("walkthrough") },
     { icon: Shield, label: t.settings.parentMode, arrow: true, action: () => onNavigate?.("parentLogin") },
+    { icon: GraduationCap, label: t.settings.forEducators, arrow: true, action: () => onNavigate?.("educator") },
   ]
 
   return (
@@ -77,9 +79,9 @@ export function SettingsScreen({ onBack, onNavigate }: SettingsScreenProps) {
         {/* App Info */}
         <div className="mt-8 text-center">
           <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
-            <span className="text-2xl font-bold text-primary">S</span>
+            <span className="text-2xl font-bold text-primary">N</span>
           </div>
-          <p className="font-semibold text-foreground">Shapi</p>
+          <p className="font-semibold text-foreground">Numi</p>
           <p className="text-sm text-muted-foreground">v1.0.0</p>
         </div>
       </div>

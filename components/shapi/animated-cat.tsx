@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 export type CatMood = "idle" | "happy" | "sleepy"
@@ -29,17 +28,9 @@ export function AnimatedCat({ mood = "idle", size = "md", className }: AnimatedC
           mood === "sleepy" && "animate-cat-sleepy"
         )}
       >
-        <Image
-          src="/images/kitty.png"
-          alt={`Kitty feeling ${mood}`}
-          fill
-          className={cn(
-            "object-contain transition-all duration-300",
-            mood === "sleepy" && "opacity-80 brightness-95"
-          )}
-          priority
-        />
-        
+        {/* Animation placeholder — kitty photo removed. Drop your own animation here. */}
+        <div className="absolute inset-0" aria-hidden="true" />
+
         {/* Sparkles for happy mood */}
         {mood === "happy" && (
           <>

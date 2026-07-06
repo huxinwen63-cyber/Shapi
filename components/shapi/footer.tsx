@@ -25,8 +25,8 @@ export function Footer() {
         {/* Footer info */}
         <div className="text-center">
           <div className="text-2xl font-bold text-foreground mb-4">
-            <span className="text-primary">Sha</span>
-            <span className="text-accent">pi</span>
+            <span className="text-primary">Nu</span>
+            <span className="text-accent">mi</span>
           </div>
           <p className="text-sm text-muted-foreground mb-6">
             {t.footer.slogan}
@@ -38,7 +38,7 @@ export function Footer() {
             <a href="#" className="hover:text-foreground transition-colors">{t.footer.contact}</a>
           </div>
           <p className="mt-8 text-xs text-muted-foreground">
-            &copy; 2026 Shapi. All rights reserved.
+            &copy; 2026 Numi. All rights reserved.
           </p>
         </div>
       </div>

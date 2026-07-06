@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Nunito, Nunito_Sans } from 'next/font/google'
+import { Nunito, Nunito_Sans, Fraunces } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -15,9 +15,15 @@ const nunitoSans = Nunito_Sans({
   display: 'swap',
 });
 
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: '--font-display',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
-  title: 'Shapi - 让数学学习从形状开始',
-  description: '专为5-7岁儿童设计的几何优先数学启蒙App，通过视觉化学习建立数感基础',
+  title: 'Numi - 让孩子爱上数字',
+  description: '专为孩子设计的数感启蒙App，通过游戏化学习建立数感基础',
   generator: 'v0.app',
 }
 
@@ -27,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="zh-CN">
-      <body className={`${nunito.variable} ${nunitoSans.variable} font-sans antialiased`}>
+    <html lang="zh-CN" className="bg-background">
+      <body className={`${nunito.variable} ${nunitoSans.variable} ${fraunces.variable} font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
